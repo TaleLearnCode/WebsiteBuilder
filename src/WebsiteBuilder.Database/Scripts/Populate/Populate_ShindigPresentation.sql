@@ -48,21 +48,19 @@ USING (VALUES
               ( 30, 72, 9, '2019-06-01 14:00', '2019-06-01 14:50', 'EDT', 'Room 252'),               -- Beer City Code
               ( 31, 71, 9, '2019-06-06 18:00', '2019-06-06 19:30', 'EDT', 'TEKsystems'),             -- Louisville Tech Ladies
               ( 32, 12, 9, '2022-09-08 18:30', '2022-09-08 20:00', 'CDT', 'Online'),                 -- Tulsa .NET User Group
-              ( 33, 10, 9, '2022-10-04 13:00', '2022-10-04 14:00', 'CDT', 'Tuscany'),                -- Prairie Dev Con - Regina
+              ( 33, 10, 9, '2022-10-04 13:00', '2022-10-04 14:00', 'CDT', 'Tuscany'))                -- Prairie Dev Con - Regina
 
-              -- Going Schema-less: How to migrate a relational database to a NoSQL database
-              ( 34,  14, 15, '2022-07-26 16:00', '2022-07-26 17:00', 'CDT', 'Room H'),                -- THAT
-              ( 35,  98, 15, '2021-10-15 15:10', '2021-10-15 16:10', 'EDT', 'Breakout Three'),        -- Momentum Developer Conference
-              ( 36,  99, 15, '2021-10-09 13:00', '2021-10-09 14:00', 'EDT', '207'),                   -- Atlanta Code Camp
-              ( 37,  25, 15, '2021-09-17 14:15', '2021-09-17 15:15', 'CDT', '2211'),                  -- KCDC
-              ( 38, 100, 15, '2021-07-27 19:30', '2021-07-27 21:30', 'CDT', 'Online'),                -- Tulsa .NET User Group
-              ( 39,  29, 15, '2021-07-27 15:30', '2021-07-27 16:30', 'CDT', 'Hybrid'),                -- THAT
-              ( 40,  30, 15, '2021-07-14 15:45', '2021-07-14 16:15', 'CDT', '105'),                   -- Nebraska.Code
+              ---- Going Schema-less: How to migrate a relational database to a NoSQL database
+              --( 34,  14, 15, '2022-07-26 16:00', '2022-07-26 17:00', 'CDT', 'Room H'),                -- THAT
+              --( 35,  98, 15, '2021-10-15 15:10', '2021-10-15 16:10', 'EDT', 'Breakout Three'),        -- Momentum Developer Conference
+              --( 36,  99, 15, '2021-10-09 13:00', '2021-10-09 14:00', 'EDT', '207'),                   -- Atlanta Code Camp
+              --( 37,  25, 15, '2021-09-17 14:15', '2021-09-17 15:15', 'CDT', '2211'),                  -- KCDC
+              --( 38, 100, 15, '2021-07-27 19:30', '2021-07-27 21:30', 'CDT', 'Online'),                -- Tulsa .NET User Group
+              --( 39,  29, 15, '2021-07-27 15:30', '2021-07-27 16:30', 'CDT', 'Hybrid'),                -- THAT
+              --( 40,  30, 15, '2021-07-14 15:45', '2021-07-14 16:15', 'CDT', '105'))                   -- Nebraska.Code
 
 
 
-              ( 1, 1, 2, '2023-03-23 18:00', '2023-03-23 19:00', 'TBA'),
-              ( 2, 1, 3, '2023-03-23 21:45', '2023-03-23 22:45', 'TBA'))
 AS SOURCE (ShindigPresentationId,
            ShindigId,
            PresentationId,

@@ -49,32 +49,32 @@ USING (VALUES
               (27, 10, 3, 'Learn how to publish your class libraries so potential users can find them'),
 
               -- Developing Resilient Serverless Solutions
-              (29, 11, 1, 'Learn how to not just build Azure Function solutions but Azure Function solutions that take extra steps for resiliency'),
-              (30, 11, 2, 'See quality techniques for testing your Azure Functions to ensure that they work under load'),
-              (31, 11, 3, 'Learn how to monitor your Azure Functions to know about failures as soon as possible'),
+              (28, 11, 1, 'Learn how to not just build Azure Function solutions but Azure Function solutions that take extra steps for resiliency'),
+              (29, 11, 2, 'See quality techniques for testing your Azure Functions to ensure that they work under load'),
+              (30, 11, 3, 'Learn how to monitor your Azure Functions to know about failures as soon as possible'),
 
               -- Design and Develop a Serverless Event-Driven Microservice-Based Solution in 2 Days
-              (32, 12, 1, 'Understand the different serverless, event-driven cloud services and how to put them together to build a cohesive microservice-based architecture'),
-              (33, 12, 2, 'Build a working serverless event-driven microservice-based solution using best practices based upon real-world experience of what has worked and what has not'),
-              (34, 12, 3, 'Gets hands-on experience deploying the solution you have built using continuous integration/continuous development tools that make it easy to keep your solution updated with the latest changes'),
+              (31, 12, 1, 'Understand the different serverless, event-driven cloud services and how to put them together to build a cohesive microservice-based architecture'),
+              (32, 12, 2, 'Build a working serverless event-driven microservice-based solution using best practices based upon real-world experience of what has worked and what has not'),
+              (33, 12, 3, 'Gets hands-on experience deploying the solution you have built using continuous integration/continuous development tools that make it easy to keep your solution updated with the latest changes'),
 
               -- Beyond Hello World: Getting Deeper into Azure Functions
-              (35, 13, 1, 'Learn about the different Azure Function bindings and triggers outside of the HTTP trigger'),
-              (36, 13, 2, 'See real-world examples of how Azure Functions have been used to solve real needs'),
-              (37, 13, 3, 'Learn how you can use the Durable Functions extension to build orchestration processes that take Azure Functions further than you could have imagined'),
+              (34, 13, 1, 'Learn about the different Azure Function bindings and triggers outside of the HTTP trigger'),
+              (35, 13, 2, 'See real-world examples of how Azure Functions have been used to solve real needs'),
+              (36, 13, 3, 'Learn how you can use the Durable Functions extension to build orchestration processes that take Azure Functions further than you could have imagined'),
 
               -- Going Schema-less: How to migrate a relational database to a NoSQL database
-              (38, 14, 1, 'Learn about the pros and cons of developing with a NoSQL data model over a relational data model'),
-              (39, 14, 1, 'Learn how to migrate data from a relational data model to a NoSQL data model'),
-              (40, 14, 1, 'Learn how to develop a .NET application to use a Cosmos DB NoSQL data model'),
+              (37, 14, 1, 'Learn about the pros and cons of developing with a NoSQL data model over a relational data model'),
+              (38, 14, 1, 'Learn how to migrate data from a relational data model to a NoSQL data model'),
+              (39, 14, 1, 'Learn how to develop a .NET application to use a Cosmos DB NoSQL data model'))
 
               
-              -- Technical Debt Is Not Free
-              ( 4, 2, 1, 'Understand what technical debt is and how to measure it'),
-              ( 5, 2, 2, 'Understand how to track technical debt in a way meaningful for developers and the business'),
-              ( 6, 2, 3, 'Learn ways to combat technical debt'),
+              ---- Technical Debt Is Not Free
+              --( 4, 2, 1, 'Understand what technical debt is and how to measure it'),
+              --( 5, 2, 2, 'Understand how to track technical debt in a way meaningful for developers and the business'),
+              --( 6, 2, 3, 'Learn ways to combat technical debt'))
               
-              )
+              
 AS SOURCE (LearningObjectiveId,
            PresentationId,
            SortOrder,

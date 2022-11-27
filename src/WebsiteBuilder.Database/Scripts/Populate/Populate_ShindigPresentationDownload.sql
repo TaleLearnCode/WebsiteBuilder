@@ -48,16 +48,16 @@ USING (VALUES
               ( 30, 30, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-BeerCityCode2019.pdf'),              -- Beer City Code
               ( 31, 31, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-LouisvilleTechLadiesJune2019.pdf'),  -- Louisville Tech Ladies
               ( 32, 32, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-Tulsa2022.pdf'),                     -- Tulsa .NET User Group
-              ( 33, 33, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-PDCRegina2022.pdf'),                 -- Prairie Dev Con - Regina
+              ( 33, 33, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-PDCRegina2022.pdf')                  -- Prairie Dev Con - Regina
               
-              -- Going Schema-less: How to migrate a relational database to a NoSQL database
-              ( 34, 34, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_THAT.pdf'),      -- THAT
-              ( 35, 35, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_Momentum.pdf'),  -- Momentum Developer Conference
-              ( 36, 36, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_AtlantaCodeCamp.pdf'),                     -- Atlanta Code Camp
-              ( 37, 37, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_KCDC.pdf'),                                -- KCDC
-              ( 38, 38, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_Tulsa.pdf'),                               -- Tulsa .NET User Group
-              ( 39, 39, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_THAT.pdf'),                                -- THAT
-              ( 40, 40, 'Slides', 'https://bit.ly/3ehtuGH'),                                                                                 -- Nebraska.Code
+              ---- Going Schema-less: How to migrate a relational database to a NoSQL database
+              --( 34, 34, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_THAT.pdf'),      -- THAT
+              --( 35, 35, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_Momentum.pdf'),  -- Momentum Developer Conference
+              --( 36, 36, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_AtlantaCodeCamp.pdf'),                     -- Atlanta Code Camp
+              --( 37, 37, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_KCDC.pdf'),                                -- KCDC
+              --( 38, 38, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_Tulsa.pdf'),                               -- Tulsa .NET User Group
+              --( 39, 39, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_THAT.pdf'),                                -- THAT
+              --( 40, 40, 'Slides', 'https://bit.ly/3ehtuGH')                                                                                  -- Nebraska.Code
               
               
               )

@@ -4,6 +4,10 @@ using WebsiteBuilder.Prototype.Data;
 using WebsiteBuilder.Prototype.Models;
 using WebsiteBuilder.Prototype.Services;
 
+const string templatePath = @"D:\Repos\TaleLearnCode\WebsiteBuilder\src\WebsiteBuilder.Prototype\PageTemplates\";
+const string presentationDetailTemplatePath = $"{templatePath}template_presentation.html";
+const string presenationListTemplatePath = $"{templatePath}template_presentations.html";
+
 using WebsiteBuilderContext websiteBuilderContext = new WebsiteBuilderContext();
 
 Console.WriteLine("Retrieving the upcoming shindig...");
@@ -25,10 +29,11 @@ List<Presentation> presentations = await websiteBuilderContext.Presentations
 		.ThenInclude(x => x.ShindigPresentationDownloads)
 	.ToListAsync();
 
-using ProgressBar progressBar = new(presentations.Count, $"Building presenation pages (1 of {presentations.Count})");
-PresentationServices presentationServices = new(@"D:\Repos\TaleLearnCode\WebsiteBuilder\src\WebsiteBuilder.Prototype\PageTemplates\template_presentation.html", upcomingShindigs, @"D:\Temp\");
+using ProgressBar progressBar = new(presentations.Count, $"Building static pages (1 of {presentations.Count + 1})");
+PresentationServices presentationServices = new(upcomingShindigs, @"D:\Temp\");
+await presentationServices.BuildPresentationListPageAsync(presentations, presenationListTemplatePath);
 foreach (Presentation presentation in presentations)
 {
-	await presentationServices.BuildPresentationPage(presentation, progressBar);
+	await presentationServices.BuildPresentationPageAsync(presentation, presentationDetailTemplatePath);
 	progressBar.Tick($"Building presentation pages ({progressBar.CurrentTick + 1} of {progressBar.MaxTicks})");
 }

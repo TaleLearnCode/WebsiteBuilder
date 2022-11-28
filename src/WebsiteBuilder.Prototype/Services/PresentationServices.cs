@@ -1,5 +1,6 @@
-﻿using ShellProgressBar;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Text;
+using WebsiteBuilder.Prototype.Data;
 using WebsiteBuilder.Prototype.Models;
 
 namespace WebsiteBuilder.Prototype.Services;
@@ -7,26 +8,22 @@ namespace WebsiteBuilder.Prototype.Services;
 internal class PresentationServices
 {
 
-	private readonly string _pageTemplatePath;
 	private readonly List<Shindig> _upcomingShindigs;
 	private readonly string _outputPath;
 
 	internal PresentationServices(
-		string pageTemplatePath,
 		List<Shindig> upcomingShindigs,
 		string outputPath)
 	{
-		_pageTemplatePath = pageTemplatePath;
 		_upcomingShindigs = upcomingShindigs;
 		_outputPath = outputPath;
 	}
 
-	internal async Task BuildPresentationPage(
+	internal async Task BuildPresentationPageAsync(
 		Presentation presentation,
-		ProgressBar parentProgressBar)
+		string pageTemplatePath)
 	{
-		List<string> template = await ReadTemplate();
-		using ChildProgressBar progressBar = parentProgressBar.Spawn(template.Count, $"Building page for '{presentation.PresentationShortTitle}'");
+		List<string> template = await ReadTemplate(pageTemplatePath);
 		StringBuilder presentationPage = new();
 		foreach (string templateLine in template)
 		{
@@ -40,12 +37,10 @@ internal class PresentationServices
 				builtLine = builtLine.Replace("<template-presentation_title></template-presentation_title>", presentation.PresentationTitle);
 			if (builtLine.Contains("<template-presentation_presentationtype></template-presentation_presentationtype>"))
 				builtLine = builtLine.Replace("<template-presentation_presentationtype></template-presentation_presentationtype>", presentation.PresentationType.PresentationTypeName);
-
 			if (builtLine.Contains("template-presentation_repolink"))
 				builtLine = builtLine.Replace("template-presentation_repolink", presentation.RepoLink);
 			if (builtLine.Contains("template-presentation_permalink"))
 				builtLine = builtLine.Replace("template-presentation_permalink", presentation.Permalink);
-
 			if (builtLine.Contains("<template-presentation_repolink></template-presentation_repolink>"))
 				builtLine = builtLine.Replace("<template-presentation_repolink></template-presentation_repolink>", presentation.RepoLink);
 			if (builtLine.Contains("<template-presentation_shortabstract></template-presentation_shortabstract>"))
@@ -57,7 +52,7 @@ internal class PresentationServices
 			if (builtLine.Contains("<template-presentation_shindigs></template-presentation_shindigs>"))
 				builtLine = builtLine.Replace("<template-presentation_shindigs></template-presentation_shindigs>", BuildPresenetationShindigs(presentation));
 			if (builtLine.Contains("<template-presentation_relatedpresentations></template-presentation_relatedpresentations>"))
-				builtLine = builtLine.Replace("<template-presentation_relatedpresentations></template-presentation_relatedpresentations>", BuildRelatedPresentations(presentation));
+				builtLine = builtLine.Replace("<template-presentation_relatedpresentations></template-presentation_relatedpresentations>", await BuildRelatedPresentationsAsync(presentation));
 			if (builtLine.Contains("<template-presentation_tags></template-presentation_tags>"))
 				builtLine = builtLine.Replace("<template-presentation_tags></template-presentation_tags>", AddTags(presentation));
 			if (builtLine.Contains("<template_upcomingeventscarousel></template_upcomingeventscarousel>"))
@@ -68,15 +63,39 @@ internal class PresentationServices
 				builtLine = builtLine.Replace("<template_upcomingmeetups></template_upcomingmeetups>", AddUpcomingMeetupsListing());
 
 			presentationPage.AppendLine(builtLine);
-			progressBar.Tick($"Building page for '{presentation.PresentationShortTitle}'");
 		}
 		await File.WriteAllTextAsync($"{_outputPath}{presentation.Permalink}.html", presentationPage.ToString());
 	}
 
-	private async Task<List<string>> ReadTemplate()
+	internal async Task BuildPresentationListPageAsync(
+		List<Presentation> presentations,
+		string pageTemplatePath)
+	{
+		List<string> template = await ReadTemplate(pageTemplatePath);
+		StringBuilder presentationPage = new();
+		foreach (string templateLine in template)
+		{
+			string builtLine = templateLine;
+			if (builtLine.Contains("<template-presentationslist></template-presentationslist>"))
+				builtLine = builtLine.Replace("<template-presentationslist></template-presentationslist>", AddPresentationListing(presentations));
+			if (builtLine.Contains("<template_upcomingeventscarousel></template_upcomingeventscarousel>"))
+				builtLine = builtLine.Replace("<template_upcomingeventscarousel></template_upcomingeventscarousel>", AddUpcomingShindigCarousel());
+			if (builtLine.Contains("<template_upcomingspeakingengagementslist></template_upcomingspeakingengagementslist>"))
+				builtLine = builtLine.Replace("<template_upcomingspeakingengagementslist></template_upcomingspeakingengagementslist>", AddUpcomingShindigListing());
+			if (builtLine.Contains("<template_upcomingmeetups></template_upcomingmeetups>"))
+				builtLine = builtLine.Replace("<template_upcomingmeetups></template_upcomingmeetups>", AddUpcomingMeetupsListing());
+
+			presentationPage.AppendLine(builtLine);
+		}
+
+		await File.WriteAllTextAsync($"{_outputPath}presentations.html", presentationPage.ToString());
+
+	}
+
+	private async Task<List<string>> ReadTemplate(string pageTemplatePath)
 	{
 		List<string> response = new();
-		foreach (string templateLine in await File.ReadAllLinesAsync(_pageTemplatePath))
+		foreach (string templateLine in await File.ReadAllLinesAsync(pageTemplatePath))
 		{
 			response.Add(templateLine);
 		}
@@ -147,12 +166,18 @@ internal class PresentationServices
 				shindigPresentationDownload.DownloadName;
 	}
 
-	private string BuildRelatedPresentations(Presentation presentation)
+	private async Task<string> BuildRelatedPresentationsAsync(Presentation presentation)
 	{
-		if (presentation.PresentationRelatedRelatedPresentations.Any())
+		using WebsiteBuilderContext websiteBuilderContext = new();
+		List<Presentation> relatedPresentations = (await websiteBuilderContext.PresentationRelateds
+			.Where(x => x.PrimaryPresentationId == presentation.PresentationId)
+			.Include(x => x.RelatedPresentation)
+			.ToListAsync())
+			.Select(x => x.RelatedPresentation).ToList();
+		if (relatedPresentations is not null && relatedPresentations.Any())
 		{
 			StringBuilder response = new("<ul>");
-			foreach (Presentation relatedPresentation in presentation.PresentationRelatedRelatedPresentations.Select(x => x.RelatedPresentation))
+			foreach (Presentation relatedPresentation in relatedPresentations)
 			{
 				response.AppendLine($"                  <li>");
 				response.AppendLine($"                    <a href=\"{relatedPresentation.Permalink}.html\">");
@@ -272,6 +297,37 @@ internal class PresentationServices
 			return startDate.Day.ToString();
 		else
 			return $"{startDate.Day}-{endDate.Day}";
+	}
+
+	private string AddPresentationListing(List<Presentation> presentations)
+	{
+		if (presentations is not null && presentations.Any())
+		{
+			StringBuilder response = new();
+			response.AppendLine($"<div class=\"row no-gutters\">");
+			foreach (Presentation presentation in presentations)
+			{
+				response.AppendLine($"            <div class=\"col-lg-4 col-md-6\">");
+				response.AppendLine($"              <div class=\"mask s2\">");
+				response.AppendLine($"                <div class=\"cover\">");
+				response.AppendLine($"                  <div class=\"c-inner\">");
+				response.AppendLine($"                    <h3><i class=\"fa fa-circle-thin\"></i><span>{presentation.PresentationTitle}</span></h3>");
+				response.AppendLine($"                    <p>{presentation.Summary}</p>");
+				response.AppendLine($"                    <div class=\"spacer20\"></div>");
+				response.AppendLine($"                    <a href=\"{presentation.Permalink}.html\" class=\"btn-custom capsule\">Presentation Details</a>");
+				response.AppendLine($"                  </div>");
+				response.AppendLine($"                </div>");
+				response.AppendLine($"                <img src=\"images/presentations/{presentation.Permalink}.jpg\" alt=\"{presentation.PresentationTitle}\" class=\"img-responsive\" />");
+				response.AppendLine($"              </div>");
+				response.AppendLine($"            </div>");
+			}
+			response.AppendLine($"          </div>");
+			return response.ToString();
+		}
+		else
+		{
+			return "There are presentations";
+		}
 	}
 
 }

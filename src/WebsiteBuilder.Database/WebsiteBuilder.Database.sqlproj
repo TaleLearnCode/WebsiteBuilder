@@ -73,6 +73,10 @@
     <Build Include="Tables\ShindigType.sql" />
     <Build Include="Tables\ShindigStatus.sql" />
     <Build Include="Tables\PresentationRelated.sql" />
+    <Build Include="Tables\CommitLog.sql" />
+    <Build Include="Tables\CommitType.sql" />
+    <Build Include="Tables\TemplateType.sql" />
+    <Build Include="Tables\Template.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Populate\Populate_Tag.sql" />
@@ -86,6 +90,10 @@
     <None Include="Scripts\Populate\Populate_ShindigStatus.sql" />
     <None Include="Scripts\Populate\Populate_ShindigPresentationDownload.sql" />
     <None Include="Scripts\Populate\Populate_PresentationRelated.sql" />
+    <None Include="Scripts\Populate\Populate_CommitType.sql" />
+    <None Include="WebsiteBuilder.Database.publish.xml" />
+    <None Include="Scripts\Populate\Populate_TemplateType.sql" />
+    <None Include="Scripts\Populate\Populate_Template.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

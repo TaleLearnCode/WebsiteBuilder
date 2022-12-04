@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebsiteBuilder.Prototype.Models;
 
 namespace WebsiteBuilder.Prototype.Data
 {
@@ -10,10 +9,12 @@ namespace WebsiteBuilder.Prototype.Data
 		}
 
 		public WebsiteBuilderContext(DbContextOptions<WebsiteBuilderContext> options)
-				: base(options)
+			: base(options)
 		{
 		}
 
+		public virtual DbSet<CommitLog> CommitLogs { get; set; } = null!;
+		public virtual DbSet<CommitType> CommitTypes { get; set; } = null!;
 		public virtual DbSet<LearningObjective> LearningObjectives { get; set; } = null!;
 		public virtual DbSet<Presentation> Presentations { get; set; } = null!;
 		public virtual DbSet<PresentationRelated> PresentationRelateds { get; set; } = null!;
@@ -25,6 +26,8 @@ namespace WebsiteBuilder.Prototype.Data
 		public virtual DbSet<ShindigStatus> ShindigStatuses { get; set; } = null!;
 		public virtual DbSet<ShindigType> ShindigTypes { get; set; } = null!;
 		public virtual DbSet<Tag> Tags { get; set; } = null!;
+		public virtual DbSet<Template> Templates { get; set; } = null!;
+		public virtual DbSet<TemplateType> TemplateTypes { get; set; } = null!;
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -36,6 +39,60 @@ namespace WebsiteBuilder.Prototype.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			modelBuilder.Entity<CommitLog>(entity =>
+			{
+				entity.HasKey(e => e.CommitId)
+					.HasName("pkcCommitLog");
+
+				entity.ToTable("CommitLog");
+
+				entity.HasComment("Record of a file upload to GitHub.");
+
+				entity.Property(e => e.CommitId)
+					.HasMaxLength(100)
+					.HasComment("The identifier of the commit.");
+
+				entity.Property(e => e.CommitDateTime)
+					.HasDefaultValueSql("(getutcdate())")
+					.HasComment("The UTC date and time of the commit.");
+
+				entity.Property(e => e.CommitTypeId).HasComment("Identifier of the type of commit that was performed.");
+
+				entity.Property(e => e.Permalink)
+					.HasMaxLength(200)
+					.HasComment("The permalink of the commited file.");
+
+				entity.Property(e => e.TemplateId).HasComment("Identifier of the template used to build the commited file.");
+
+				entity.HasOne(d => d.CommitType)
+					.WithMany(p => p.CommitLogs)
+					.HasForeignKey(d => d.CommitTypeId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkCommitLog_CommitType");
+
+				entity.HasOne(d => d.Template)
+					.WithMany(p => p.CommitLogs)
+					.HasForeignKey(d => d.TemplateId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkCommitLog_Template");
+			});
+
+			modelBuilder.Entity<CommitType>(entity =>
+			{
+				entity.ToTable("CommitType");
+
+				entity.HasComment("Represents a type of a file commit.");
+
+				entity.Property(e => e.CommitTypeId)
+					.ValueGeneratedNever()
+					.HasComment("The identifier of the commit type record.");
+
+				entity.Property(e => e.CommitTypeName)
+					.HasMaxLength(100)
+					.IsUnicode(false)
+					.HasComment("The of the commit type.");
+			});
+
 			modelBuilder.Entity<LearningObjective>(entity =>
 			{
 				entity.ToTable("LearningObjective");
@@ -45,18 +102,18 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.LearningObjectiveId).HasComment("The identifier of the learning objective record.");
 
 				entity.Property(e => e.LearningObjectiveText)
-									.HasMaxLength(300)
-									.HasComment("The text of the learning objective.");
+					.HasMaxLength(300)
+					.HasComment("The text of the learning objective.");
 
 				entity.Property(e => e.PresentationId).HasComment("The identifier of the associated presentation record.");
 
 				entity.Property(e => e.SortOrder).HasComment("The sorting order of the learning objective.");
 
 				entity.HasOne(d => d.Presentation)
-									.WithMany(p => p.LearningObjectives)
-									.HasForeignKey(d => d.PresentationId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkLearningObjective_Presentation");
+					.WithMany(p => p.LearningObjectives)
+					.HasForeignKey(d => d.PresentationId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkLearningObjective_Presentation");
 			});
 
 			modelBuilder.Entity<Presentation>(entity =>
@@ -65,41 +122,44 @@ namespace WebsiteBuilder.Prototype.Data
 
 				entity.HasComment("Represents the speaker's presentations.");
 
+				entity.HasIndex(e => e.Permalink, "unqPresentation_Permalink")
+					.IsUnique();
+
 				entity.Property(e => e.PresentationId).HasComment("The identifier of the presentation record.");
 
 				entity.Property(e => e.Abstract)
-									.HasMaxLength(2000)
-									.HasComment("The full abstract for the presentation.");
+					.HasMaxLength(2000)
+					.HasComment("The full abstract for the presentation.");
 
 				entity.Property(e => e.IsArchived).HasComment("Flag indicating whether the presentation has been archived.");
 
 				entity.Property(e => e.Permalink).HasMaxLength(200);
 
 				entity.Property(e => e.PresentationShortTitle)
-									.HasMaxLength(60)
-									.HasComment("The short title of the presentation.");
+					.HasMaxLength(60)
+					.HasComment("The short title of the presentation.");
 
 				entity.Property(e => e.PresentationTitle)
-									.HasMaxLength(300)
-									.HasComment("The full title of the presentation.");
+					.HasMaxLength(300)
+					.HasComment("The full title of the presentation.");
 
 				entity.Property(e => e.PresentationTypeId).HasComment("Identifier of the type of presentation is represented.");
 
 				entity.Property(e => e.RepoLink).HasMaxLength(200);
 
 				entity.Property(e => e.ShortAbstract)
-									.HasMaxLength(500)
-									.HasComment("The short abstract for the presentation.");
+					.HasMaxLength(500)
+					.HasComment("The short abstract for the presentation.");
 
 				entity.Property(e => e.Summary)
-									.HasMaxLength(140)
-									.HasComment("The summary for the presentation.");
+					.HasMaxLength(140)
+					.HasComment("The summary for the presentation.");
 
 				entity.HasOne(d => d.PresentationType)
-									.WithMany(p => p.Presentations)
-									.HasForeignKey(d => d.PresentationTypeId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkPresentation_PresentationType");
+					.WithMany(p => p.Presentations)
+					.HasForeignKey(d => d.PresentationTypeId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkPresentation_PresentationType");
 			});
 
 			modelBuilder.Entity<PresentationRelated>(entity =>
@@ -107,16 +167,16 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.ToTable("PresentationRelated");
 
 				entity.HasOne(d => d.PrimaryPresentation)
-									.WithMany(p => p.PresentationRelatedPrimaryPresentations)
-									.HasForeignKey(d => d.PrimaryPresentationId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkRelatedPresentation_Presentation_Primary");
+					.WithMany(p => p.PresentationRelatedPrimaryPresentations)
+					.HasForeignKey(d => d.PrimaryPresentationId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkRelatedPresentation_Presentation_Primary");
 
 				entity.HasOne(d => d.RelatedPresentation)
-									.WithMany(p => p.PresentationRelatedRelatedPresentations)
-									.HasForeignKey(d => d.RelatedPresentationId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkRelatedPresentation_Presentation_Related");
+					.WithMany(p => p.PresentationRelatedRelatedPresentations)
+					.HasForeignKey(d => d.RelatedPresentationId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkRelatedPresentation_Presentation_Related");
 			});
 
 			modelBuilder.Entity<PresentationTag>(entity =>
@@ -132,16 +192,16 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.TagId).HasComment("Identifier of the associated tag.");
 
 				entity.HasOne(d => d.Presentation)
-									.WithMany(p => p.PresentationTags)
-									.HasForeignKey(d => d.PresentationId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkPresentationTag_Presentation");
+					.WithMany(p => p.PresentationTags)
+					.HasForeignKey(d => d.PresentationId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkPresentationTag_Presentation");
 
 				entity.HasOne(d => d.Tag)
-									.WithMany(p => p.PresentationTags)
-									.HasForeignKey(d => d.TagId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkPresentationTag_Tag");
+					.WithMany(p => p.PresentationTags)
+					.HasForeignKey(d => d.TagId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkPresentationTag_Tag");
 			});
 
 			modelBuilder.Entity<PresentationType>(entity =>
@@ -153,8 +213,8 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.PresentationTypeId).HasComment("The identifier of the presentation type record.");
 
 				entity.Property(e => e.PresentationTypeName)
-									.HasMaxLength(100)
-									.HasComment("The name of the presentation type.");
+					.HasMaxLength(100)
+					.HasComment("The name of the presentation type.");
 			});
 
 			modelBuilder.Entity<Shindig>(entity =>
@@ -163,63 +223,66 @@ namespace WebsiteBuilder.Prototype.Data
 
 				entity.HasComment("Represents an event that the speaker participates in.");
 
+				entity.HasIndex(e => e.Permalink, "unqShindig_Permalink")
+					.IsUnique();
+
 				entity.Property(e => e.ShindigId).HasComment("The identifier of the shindig record.");
 
 				entity.Property(e => e.EndDate)
-									.HasColumnType("date")
-									.HasComment("The end date of the event.");
+					.HasColumnType("date")
+					.HasComment("The end date of the event.");
 
 				entity.Property(e => e.EndingCost)
-									.HasMaxLength(20)
-									.HasComment("The ending cost for the event.");
+					.HasMaxLength(20)
+					.HasComment("The ending cost for the event.");
 
 				entity.Property(e => e.ListingLocation)
-									.HasMaxLength(100)
-									.HasComment("The location of the event to show on the event listing.");
+					.HasMaxLength(100)
+					.HasComment("The location of the event to show on the event listing.");
 
 				entity.Property(e => e.OverviewLocation)
-									.HasMaxLength(300)
-									.HasComment("The location of the event to show on the overview.");
+					.HasMaxLength(300)
+					.HasComment("The location of the event to show on the overview.");
 
 				entity.Property(e => e.Permalink).HasMaxLength(200);
 
 				entity.Property(e => e.ShindigDescription)
-									.HasMaxLength(2000)
-									.HasComment("The full description of the event.");
+					.HasMaxLength(2000)
+					.HasComment("The full description of the event.");
 
 				entity.Property(e => e.ShindigLink).HasMaxLength(200);
 
 				entity.Property(e => e.ShindigName)
-									.HasMaxLength(200)
-									.HasComment("The name of the shindig.");
+					.HasMaxLength(200)
+					.HasComment("The name of the shindig.");
 
 				entity.Property(e => e.ShindigStatusId).HasComment("Identifier of the associated shindig status.");
 
 				entity.Property(e => e.ShindigSummary)
-									.HasMaxLength(140)
-									.HasComment("The summary description of the event.");
+					.HasMaxLength(140)
+					.HasComment("The summary description of the event.");
 
 				entity.Property(e => e.ShindigTypeId).HasComment("Identifier of the associated shindig type.");
 
 				entity.Property(e => e.StartDate)
-									.HasColumnType("date")
-									.HasComment("The start date of the event.");
+					.HasColumnType("date")
+					.HasComment("The start date of the event.");
 
 				entity.Property(e => e.StartingCost)
-									.HasMaxLength(20)
-									.HasComment("The starting cost for the event.");
+					.HasMaxLength(20)
+					.HasComment("The starting cost for the event.");
 
 				entity.HasOne(d => d.ShindigStatus)
-									.WithMany(p => p.Shindigs)
-									.HasForeignKey(d => d.ShindigStatusId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkShindig_ShindigStatus");
+					.WithMany(p => p.Shindigs)
+					.HasForeignKey(d => d.ShindigStatusId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkShindig_ShindigStatus");
 
 				entity.HasOne(d => d.ShindigType)
-									.WithMany(p => p.Shindigs)
-									.HasForeignKey(d => d.ShindigTypeId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkShindig_ShindigType");
+					.WithMany(p => p.Shindigs)
+					.HasForeignKey(d => d.ShindigTypeId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkShindig_ShindigType");
 			});
 
 			modelBuilder.Entity<ShindigPresentation>(entity =>
@@ -235,28 +298,28 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.PresentationId).HasComment("Identifier of the associated presentation.");
 
 				entity.Property(e => e.Room)
-									.HasMaxLength(50)
-									.HasComment("The room where the presentation is being presented.");
+					.HasMaxLength(50)
+					.HasComment("The room where the presentation is being presented.");
 
 				entity.Property(e => e.ShindigId).HasComment("Identifier of the associated shindig.");
 
 				entity.Property(e => e.StartDateTime).HasComment("The starting date and time for the presentation.");
 
 				entity.Property(e => e.TimeZone)
-									.HasMaxLength(10)
-									.IsUnicode(false);
+					.HasMaxLength(10)
+					.IsUnicode(false);
 
 				entity.HasOne(d => d.Presentation)
-									.WithMany(p => p.ShindigPresentations)
-									.HasForeignKey(d => d.PresentationId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkShindigPresentation_Presentatiton");
+					.WithMany(p => p.ShindigPresentations)
+					.HasForeignKey(d => d.PresentationId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkShindigPresentation_Presentatiton");
 
 				entity.HasOne(d => d.Shindig)
-									.WithMany(p => p.ShindigPresentations)
-									.HasForeignKey(d => d.ShindigId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkShindigPresentation_Shindig");
+					.WithMany(p => p.ShindigPresentations)
+					.HasForeignKey(d => d.ShindigId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkShindigPresentation_Shindig");
 			});
 
 			modelBuilder.Entity<ShindigPresentationDownload>(entity =>
@@ -268,18 +331,18 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.ShindigPresentationDownloadId).HasComment("Identifier of the ShindigPresentationDownload record.");
 
 				entity.Property(e => e.DownloadLink)
-									.HasMaxLength(500)
-									.HasComment("The link to the download.");
+					.HasMaxLength(500)
+					.HasComment("The link to the download.");
 
 				entity.Property(e => e.DownloadName).HasMaxLength(50);
 
 				entity.Property(e => e.ShindigPresentationId).HasComment("Identifier of the associated shindig presentation.");
 
 				entity.HasOne(d => d.ShindigPresentation)
-									.WithMany(p => p.ShindigPresentationDownloads)
-									.HasForeignKey(d => d.ShindigPresentationId)
-									.OnDelete(DeleteBehavior.ClientSetNull)
-									.HasConstraintName("fkShindigPresentationDownload_ShindigPresentation");
+					.WithMany(p => p.ShindigPresentationDownloads)
+					.HasForeignKey(d => d.ShindigPresentationId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkShindigPresentationDownload_ShindigPresentation");
 			});
 
 			modelBuilder.Entity<ShindigStatus>(entity =>
@@ -291,8 +354,8 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.ShindigStatusId).HasComment("The identifier of the shindig status record.");
 
 				entity.Property(e => e.ShindigStatusName)
-									.HasMaxLength(100)
-									.HasComment("The name of the shindig status.");
+					.HasMaxLength(100)
+					.HasComment("The name of the shindig status.");
 			});
 
 			modelBuilder.Entity<ShindigType>(entity =>
@@ -304,8 +367,8 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.ShindigTypeId).HasComment("The identifier of the shindig type record.");
 
 				entity.Property(e => e.ShindigTypeName)
-									.HasMaxLength(100)
-									.HasComment("The name of the shindig type.");
+					.HasMaxLength(100)
+					.HasComment("The name of the shindig type.");
 			});
 
 			modelBuilder.Entity<Tag>(entity =>
@@ -317,8 +380,55 @@ namespace WebsiteBuilder.Prototype.Data
 				entity.Property(e => e.TagId).HasComment("The identifier of the tag record.");
 
 				entity.Property(e => e.TagName)
-									.HasMaxLength(100)
-									.HasComment("The name of the tag.");
+					.HasMaxLength(100)
+					.HasComment("The name of the tag.");
+			});
+
+			modelBuilder.Entity<Template>(entity =>
+			{
+				entity.ToTable("Template");
+
+				entity.HasComment("Represents a template used to generate a static web page.");
+
+				entity.Property(e => e.TemplateId).HasComment("The identifier of the template record.");
+
+				entity.Property(e => e.IsActive).HasComment("Flag indicating whether the template is active.");
+
+				entity.Property(e => e.TemplateFileName)
+					.HasMaxLength(100)
+					.HasComment("The file name of the template.");
+
+				entity.Property(e => e.TemplateName)
+					.HasMaxLength(100)
+					.HasComment("The of the template.");
+
+				entity.Property(e => e.TemplateTypeId).HasComment("Identifier of the type of template being represented.");
+
+				entity.HasOne(d => d.TemplateType)
+					.WithMany(p => p.Templates)
+					.HasForeignKey(d => d.TemplateTypeId)
+					.OnDelete(DeleteBehavior.ClientSetNull)
+					.HasConstraintName("fkTemplate_TemplateType");
+			});
+
+			modelBuilder.Entity<TemplateType>(entity =>
+			{
+				entity.ToTable("TemplateType");
+
+				entity.HasComment("Represents a type of a stage page template.");
+
+				entity.Property(e => e.TemplateTypeId)
+					.ValueGeneratedNever()
+					.HasComment("The identifier of the template type record.");
+
+				entity.Property(e => e.Permalink)
+					.HasMaxLength(200)
+					.HasComment("The permanent link for the file generated using the template. Not used for output files associated with speaking engagements or presentations.");
+
+				entity.Property(e => e.TemplateTypeName)
+					.HasMaxLength(100)
+					.IsUnicode(false)
+					.HasComment("The of the template type.");
 			});
 
 			OnModelCreatingPartial(modelBuilder);

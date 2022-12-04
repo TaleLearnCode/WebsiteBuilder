@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using WebsiteBuilder.Prototype.Models;
 
 namespace WebsiteBuilder.Prototype.Services;
 
@@ -38,6 +37,34 @@ internal class SpeakingEngagementServices
 			presentationPage.AppendLine(builtLine);
 		}
 
+		GitHubClient gitHubClient = new GitHubClient(new ProductHeaderValue("Corina"));
+		gitHubClient.Credentials = new("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");
+		(string owner, string repoName, string filePath, string branch) = ("TaleLearnCode", "ChadGreen.com", "src/speaking-engagements2.html", "main");
+		//await gitHubClient.Repository.Content.CreateFile(owner, repoName, filePath, new CreateFileRequest($"First commit for {filePath}", presentationPage.ToString(), branch));
+
+		IReadOnlyList<RepositoryContent> fileDetails = await gitHubClient.Repository.Content.GetAllContentsByRef(owner, repoName, filePath, branch);
+		if (presentationPage.ToString() != fileDetails.First().Content)
+		{
+			RepositoryContentChangeSet updateResult = await gitHubClient.Repository.Content.UpdateFile(owner, repoName, filePath,
+				new UpdateFileRequest("My updated file", presentationPage.ToString(), fileDetails.First().Sha));
+
+
+
+		}
+
+
+		//var apiInfo = gitHubClient.GetLastApiInfo();
+
+		//// If the ApiInfo isn't null, there will be a property called RateLimit
+		//var rateLimit = apiInfo?.RateLimit;
+
+		//var howManyRequestsCanIMakePerHour = rateLimit?.Limit;
+		//var howManyRequestsDoIHaveLeft = rateLimit?.Remaining;
+		//var whenDoesTheLimitReset = rateLimit?.Reset; // UTC time
+
+
+
+
 		await File.WriteAllTextAsync($"{_outputPath}speaking-engagements.html", presentationPage.ToString());
 	}
 
@@ -63,13 +90,17 @@ internal class SpeakingEngagementServices
 			if (builtLine.Contains("<template-engagement_costs></template-engagement_costs>"))
 				builtLine = builtLine.Replace("<template-engagement_costs></template-engagement_costs>", AddEngagementCosts(shindig));
 			if (builtLine.Contains("<template-engagement_presentations></template-engagement_presentations>"))
-				builtLine = builtLine.Replace("<template-engagement_presentations></template-engagement_presentations>", AddPresentations2(shindig.ShindigPresentations.ToList()));
+				builtLine = builtLine.Replace("<template-engagement_presentations></template-engagement_presentations>", AddPresentations(shindig.ShindigPresentations.ToList()));
 			if (builtLine.Contains("template-engagement_link"))
 				builtLine = builtLine.Replace("template-engagement_link", shindig.ShindigLink);
 			if (builtLine.Contains("template-presentation_permalink"))
 				builtLine = builtLine.Replace("template-presentation_permalink", shindig.Permalink);
 			engagementPage.AppendLine(builtLine);
 		}
+
+
+
+
 		await File.WriteAllTextAsync($"{_outputPath}{shindig.Permalink}.html", engagementPage.ToString());
 	}
 
@@ -315,40 +346,6 @@ internal class SpeakingEngagementServices
 	}
 
 	private string AddPresentations(List<ShindigPresentation> shindigPresentations)
-	{
-		if (shindigPresentations is not null && shindigPresentations.Any())
-		{
-			StringBuilder response = new();
-			response.AppendLine($"<div class=\"col-md-8\">");
-			response.AppendLine($"              <h4>Presentations</h4>");
-			response.AppendLine($"              <div class=\"row\">");
-			foreach (ShindigPresentation shindigPresentation in shindigPresentations)
-			{
-				response.AppendLine($"                <div class=\"col-lg-5 col-md-6 col-sm-6 mb30 wow fadeInRight\" data-wow-delay=\".2s\">");
-				response.AppendLine($"                  <div class=\"f-profile text-center\">");
-				response.AppendLine($"                    <a href=\"{shindigPresentation.Presentation.Permalink}.html\">");
-				response.AppendLine($"                      <div class=\"fp-wrap f-invert\">");
-				response.AppendLine($"                        <img src=\"images/presentations/{shindigPresentation.Presentation.Permalink}.jpg\" class=\"fp-image img-fluid\" alt=\"{shindigPresentation.Presentation.PresentationShortTitle}\">");
-				response.AppendLine($"                      </div>");
-				response.AppendLine($"                      <h4>{shindigPresentation.Presentation.PresentationTitle}</h4>");
-				response.AppendLine($"                    </a>");
-				if (shindigPresentation.StartDateTime is not null || shindigPresentation.EndDateTime is not null)
-					response.AppendLine($"                    <i class=\"fa fa-calendar\"></i> {shindigPresentation.StartDateTime?.ToString("MMMM d, yyyy") ?? shindigPresentation.EndDateTime?.ToString("MMMM d, yyyy")}<br />");
-				if (shindigPresentation.StartDateTime is not null || shindigPresentation.EndDateTime is not null)
-					response.AppendLine($"                    <i class=\"fa fa-clock-o\"></i> {shindigPresentation.StartDateTime?.ToString("h:mm tt") ?? shindigPresentation.EndDateTime?.ToString("h:mm tt")} {shindigPresentation.TimeZone}<br />");
-				response.AppendLine($"                    <i class=\"fa fa-map-marker\"></i> {shindigPresentation.Room ?? "TBA"}<br />");
-				if (shindigPresentation.ShindigPresentationDownloads is not null && shindigPresentation.ShindigPresentationDownloads.Any())
-					foreach (ShindigPresentationDownload shindigPresentationDownload in shindigPresentation.ShindigPresentationDownloads)
-						response.AppendLine($"                    <a href=\"{shindigPresentationDownload.DownloadLink}\" class=\"btn-custom\" target=\"_blank\">{shindigPresentationDownload.DownloadName}</a>");
-				response.AppendLine($"                  </div>");
-			}
-			response.AppendLine($"            </div>");
-			return response.ToString();
-		}
-		return string.Empty;
-	}
-
-	private string AddPresentations2(List<ShindigPresentation> shindigPresentations)
 	{
 		if (shindigPresentations is not null && shindigPresentations.Any())
 		{

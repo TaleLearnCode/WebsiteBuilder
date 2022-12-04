@@ -16,7 +16,8 @@
   Permalink          NVARCHAR(200)  NOT NULL,
   CONSTRAINT pkcShindig PRIMARY KEY CLUSTERED (ShindigId),
   CONSTRAINT fkShindig_ShindigType FOREIGN KEY (ShindigTypeId) REFERENCES dbo.ShindigType (ShindigTypeId),
-  CONSTRAINT fkShindig_ShindigStatus FOREIGN KEY (ShindigStatusId) REFERENCES dbo.ShindigStatus (ShindigStatusId)
+  CONSTRAINT fkShindig_ShindigStatus FOREIGN KEY (ShindigStatusId) REFERENCES dbo.ShindigStatus (ShindigStatusId),
+  CONSTRAINT unqShindig_Permalink UNIQUE (Permalink)
 )
 GO
 
@@ -51,4 +52,6 @@ GO
 EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'Shindig', @level2name=N'fkShindig_ShindigType',   @value=N'Defines the relationship between the Shindig and ShindigType tables using the ShindigTypeId column.', @name=N'MS_Description', @level0type=N'SCHEMA', @level1type=N'TABLE', @level2type=N'CONSTRAINT';
 GO
 EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'Shindig', @level2name=N'fkShindig_ShindigStatus', @value=N'Defines the relationship between the Shindig and ShindigType tables using the ShindigTypeId column.', @name=N'MS_Description', @level0type=N'SCHEMA', @level1type=N'TABLE', @level2type=N'CONSTRAINT';
+GO
+EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'Shindig', @level2name=N'unqShindig_Permalink',    @value=N'Defines a constraint for the Shindig table ensuring that the Permalink column is not duplicated.',    @name=N'MS_Description', @level0type=N'SCHEMA', @level1type=N'TABLE', @level2type=N'CONSTRAINT';
 GO

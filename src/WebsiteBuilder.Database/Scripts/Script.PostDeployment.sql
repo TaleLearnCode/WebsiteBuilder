@@ -9,3 +9,6 @@
 :r .\Populate\Populate_Shindig.sql
 :r .\Populate\Populate_ShindigPresentation.sql
 :r .\Populate\Populate_ShindigPresentationDownload.sql
+:r .\Populate\Populate_CommitType.sql
+:r .\Populate\Populate_TemplateType.sql
+:r .\Populate\Populate_Template.sql

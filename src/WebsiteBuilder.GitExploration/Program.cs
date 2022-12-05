@@ -10,12 +10,22 @@ Console.Write("Personal Access Token: ");
 string? accessToken = Console.ReadLine();
 if (accessToken is not null)
 {
-	//Clone();
-	Pull();
+	//////Clone();
+	////Pull();
+	////Checkout();
+	//Commit();
+	//Push();
+	////Push2();
+	///
+
+	Clone();
 	Checkout();
+	Console.WriteLine("Press enter once you make the change");
+	Console.ReadLine();
+	Add();
 	Commit();
 	Push();
-	//Push2();
+
 }
 
 
@@ -79,18 +89,18 @@ void Checkout()
 	}
 }
 
-void Commit()
+void AddAndCommit()
 {
 
 	string pathInTheWorkdir = "fileToCommit62.txt";
 
 	// Write content to the file system
 	using Repository repository = new(workingDirectoryPath);
-	File.WriteAllText(Path.Combine(repository.Info.WorkingDirectory, pathInTheWorkdir), "Commit this!");
+	//File.WriteAllText(Path.Combine(repository.Info.WorkingDirectory, pathInTheWorkdir), "Commit this!");
 
-	// Stage the file
-	repository.Index.Add(pathInTheWorkdir);
-	repository.Index.Write();
+	//// Stage the file
+	//repository.Index.Add(pathInTheWorkdir);
+	//repository.Index.Write();
 
 	// Create the commiter's signature and commit
 	Signature signature = GetSignature();
@@ -101,6 +111,32 @@ void Commit()
 	Console.WriteLine($"Commit {GetCommitId(commit)} created locally.");
 
 }
+
+void Add()
+{
+	string pathInTheWorkdir = "fileToCommit62.txt";
+	using Repository repository = new(workingDirectoryPath);
+	repository.Index.Add(pathInTheWorkdir);
+	repository.Index.Write();
+}
+
+void Commit()
+{
+
+	string pathInTheWorkdir = "fileToCommit62.txt";
+
+	using Repository repository = new(workingDirectoryPath);
+
+	// Create the commiter's signature and commit
+	Signature signature = GetSignature();
+
+	// Commit to the repository
+	Commit commit = repository.Commit("Here's a commit I made!", signature, signature);
+
+	Console.WriteLine($"Commit {GetCommitId(commit)} created locally.");
+
+}
+
 
 void Push()
 {
@@ -133,7 +169,7 @@ void Push2()
 					(url, usernameFromUrl, types) =>
 							new UsernamePasswordCredentials()
 							{
-								Username = "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",
+								Username = accessToken,
 								Password = string.Empty
 							});
 			repo.Network.Push(repo.Branches["main"], options);

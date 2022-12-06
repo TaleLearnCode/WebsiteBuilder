@@ -8,11 +8,6 @@ namespace WebsiteBuilder.Prototype.Models
     /// </summary>
     public partial class Template
     {
-        public Template()
-        {
-            CommitLogs = new HashSet<CommitLog>();
-        }
-
         /// <summary>
         /// The identifier of the template record.
         /// </summary>
@@ -35,6 +30,5 @@ namespace WebsiteBuilder.Prototype.Models
         public bool IsActive { get; set; }
 
         public virtual TemplateType TemplateType { get; set; } = null!;
-        public virtual ICollection<CommitLog> CommitLogs { get; set; }
     }
 }

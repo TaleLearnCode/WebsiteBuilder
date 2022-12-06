@@ -1,2 +1,9 @@
-﻿global using Octokit;
+﻿global using LibGit2Sharp;
+global using LibGit2Sharp.Handlers;
+global using Microsoft.EntityFrameworkCore;
+global using ShellProgressBar;
+global using System.Text;
+global using WebsiteBuilder.Prototype.Data;
 global using WebsiteBuilder.Prototype.Models;
+global using WebsiteBuilder.Prototype.Services;
+global using WebsiteBuilder.Prototype.SystemValues;

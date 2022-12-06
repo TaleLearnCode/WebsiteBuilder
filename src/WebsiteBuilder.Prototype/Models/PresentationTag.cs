@@ -22,6 +22,6 @@ namespace WebsiteBuilder.Prototype.Models
         public int PresentationId { get; set; }
 
         public virtual Presentation Presentation { get; set; } = null!;
-        public virtual Tag Tag { get; set; } = null!;
+        public virtual Chlib Tag { get; set; } = null!;
     }
 }

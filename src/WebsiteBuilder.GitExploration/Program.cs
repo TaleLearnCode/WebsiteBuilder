@@ -23,6 +23,7 @@ if (accessToken is not null)
 	Console.WriteLine("Press enter once you make the change");
 	Console.ReadLine();
 	Add();
+	//Remove();
 	Commit();
 	Push();
 
@@ -118,6 +119,15 @@ void Add()
 	using Repository repository = new(workingDirectoryPath);
 	repository.Index.Add(pathInTheWorkdir);
 	repository.Index.Write();
+}
+
+void Remove()
+{
+	using (var repo = new Repository(workingDirectoryPath))
+	{
+		// Removes the file. Path must be in Posix format (using '/' as path separator)
+		repo.Index.Remove("fileToCommit62.txt");
+	}
 }
 
 void Commit()

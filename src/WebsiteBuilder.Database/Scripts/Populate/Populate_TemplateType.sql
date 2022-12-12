@@ -2,7 +2,8 @@
 USING (VALUES ( 1, 'Footer',                  'footer.html'),
               ( 2, 'SpeakingEngagementList',  'speaking-engagements.html'),
               ( 3, 'SpeakingEngagementDetail', NULL),
-              ( 4, 'PresentationList',        'presentations.html'))
+              ( 4, 'PresentationList',         'presentations.html'),
+              ( 5, 'PresentationDetail',       NULL))
 AS SOURCE (TemplateTypeId,
            TemplateTypeName,
            Permalink)

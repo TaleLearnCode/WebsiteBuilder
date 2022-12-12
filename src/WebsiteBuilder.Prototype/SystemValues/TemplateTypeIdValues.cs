@@ -6,4 +6,5 @@ internal static class TemplateTypeIdValues
 	internal const int SpeakingEngagementListing = 2;
 	internal const int SpeakingEngagementDetail = 3;
 	internal const int PresentationListing = 4;
+	internal const int PresentationDetail = 5;
 }

@@ -9,12 +9,22 @@ string? accessToken = Console.ReadLine();
 if (accessToken is not null)
 {
 
-	using ProgressBar progressBar = new(6, "Retrieving website data...");
+	using ProgressBar progressBar = new(7, "Retrieving website data...");
 
 	using WebsiteBuilderContext websiteBuilderContext = new();
 	List<Shindig> speakingEngagements = await websiteBuilderContext.Shindigs.ToListAsync();
 	List<Shindig> upcomingSpeakingEngagements = speakingEngagements.Where(x => x.StartDate >= DateTime.UtcNow).ToList();
-	List<Presentation> presentations = await websiteBuilderContext.Presentations.ToListAsync();
+	List<Presentation> presentations = await websiteBuilderContext.Presentations
+		.Include(x => x.PresentationTags)
+			.ThenInclude(x => x.Tag)
+		.Include(x => x.PresentationType)
+		.Include(x => x.LearningObjectives)
+		.Include(x => x.PresentationRelatedRelatedPresentations)
+		.Include(x => x.ShindigPresentations)
+			.ThenInclude(x => x.Shindig)
+		.Include(x => x.ShindigPresentations)
+			.ThenInclude(x => x.ShindigPresentationDownloads)
+		.ToListAsync();
 
 	progressBar.Tick("Connecting to the git repository...");
 	if (!Directory.Exists(workingDirectoryPath) || Pull() == MergeStatus.Conflicts)
@@ -37,7 +47,13 @@ if (accessToken is not null)
 	progressBar.Tick("Buidling presentation listing page...");
 	bool presentationListingChanges = await presentationServices.BuildListingPageAsync(presentations);
 
-	if (speakingEngagementListingChanges || speakingEngagementDetailChanges || presentationListingChanges)
+	progressBar.Tick("Building presentation detail pages...");
+	bool presentationDetailChanges = await presentationServices.BuildDetailsPagesAsync(presentations, progressBar);
+
+	if (speakingEngagementListingChanges
+		|| speakingEngagementDetailChanges
+		|| presentationListingChanges
+		|| presentationDetailChanges)
 	{
 		progressBar.Tick("Committing changes to the git repository...");
 		Commit(repository);

@@ -1,6 +1,6 @@
 ﻿namespace WebsiteBuilder.Prototype.Services;
 
-internal class PresentationServices : ServicesBase3
+internal class PresentationServices : ServicesBase
 {
 
 	internal PresentationServices(

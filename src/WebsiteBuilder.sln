@@ -7,8 +7,6 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebsiteBuilder.Database", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebsiteBuilder.Prototype", "WebsiteBuilder.Prototype\WebsiteBuilder.Prototype.csproj", "{077C5936-4C65-476F-8E3F-25F01D281494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBuilder.GitExploration", "WebsiteBuilder.GitExploration\WebsiteBuilder.GitExploration.csproj", "{1C4F1E88-7000-4445-913D-7ED189E67818}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,10 +23,6 @@ Global
 		{077C5936-4C65-476F-8E3F-25F01D281494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{077C5936-4C65-476F-8E3F-25F01D281494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{077C5936-4C65-476F-8E3F-25F01D281494}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C4F1E88-7000-4445-913D-7ED189E67818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C4F1E88-7000-4445-913D-7ED189E67818}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C4F1E88-7000-4445-913D-7ED189E67818}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C4F1E88-7000-4445-913D-7ED189E67818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 ﻿namespace WebsiteBuilder.Prototype.Services;
 
-internal class SpeakingEnagementServices : ServicesBase3
+internal class SpeakingEnagementServices : ServicesBase
 {
 
 	internal SpeakingEnagementServices(

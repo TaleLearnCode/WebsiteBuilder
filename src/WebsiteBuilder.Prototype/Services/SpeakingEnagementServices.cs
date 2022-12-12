@@ -1,9 +1,9 @@
 ﻿namespace WebsiteBuilder.Prototype.Services;
 
-internal class SpeakingEnagementServices3 : ServicesBase3
+internal class SpeakingEnagementServices : ServicesBase3
 {
 
-	internal SpeakingEnagementServices3(
+	internal SpeakingEnagementServices(
 		WebsiteBuilderContext websiteBuilderContext,
 		Repository repository,
 		string workingDirectoryPath,
@@ -14,7 +14,7 @@ internal class SpeakingEnagementServices3 : ServicesBase3
 			upcomingSpeakingEngagements)
 	{ }
 
-	internal async Task BuildSpeakingEngagmentListAsync(List<Shindig> speakingEngagements)
+	internal async Task<bool> BuildSpeakingEngagmentListAsync(List<Shindig> speakingEngagements)
 	{
 		if (TryGetTemplateDetails(TemplateTypeIdValues.SpeakingEngagementListing, out Template? templateDetails) && templateDetails is not null && templateDetails.TemplateType.Permalink is not null)
 		{
@@ -37,30 +37,40 @@ internal class SpeakingEnagementServices3 : ServicesBase3
 				{
 					await File.WriteAllTextAsync(pathWithWorkingDirectory, pageHtml.ToString());
 					AddFileToGetIndex(pathInWorkingDirectory);
+					return true;
+				}
+				else
+				{
+					return false;
 				}
 			}
 			else
 			{
 				await File.WriteAllTextAsync(pathWithWorkingDirectory, pageHtml.ToString());
 				AddFileToGetIndex(pathInWorkingDirectory);
+				return true;
 			}
 
 		}
+		return false;
 	}
 
-	internal async Task BuildSpeakingEngagmentPagesAsync(
+	internal async Task<bool> BuildSpeakingEngagmentPagesAsync(
 		List<Shindig> speakingEngagements,
 		ProgressBar parentProgressBar)
 	{
+		bool response = false;
 		using ChildProgressBar progressBar = parentProgressBar.Spawn(speakingEngagements.Count, null);
 		foreach (Shindig speakingEngagement in speakingEngagements)
 		{
-			await BuildSpeakingEngagementPageAsync(speakingEngagement);
+			bool engagementResponse = await BuildSpeakingEngagementPageAsync(speakingEngagement);
+			if (engagementResponse && !response) response = true;
 			progressBar.Tick();
 		}
+		return response;
 	}
 
-	private async Task BuildSpeakingEngagementPageAsync(Shindig speakingEngagment)
+	private async Task<bool> BuildSpeakingEngagementPageAsync(Shindig speakingEngagment)
 	{
 		if (TryGetTemplateDetails(TemplateTypeIdValues.SpeakingEngagementDetail, out Template? templateDetails) && templateDetails is not null)
 		{
@@ -72,7 +82,7 @@ internal class SpeakingEnagementServices3 : ServicesBase3
 				if (lineHtml.Contains("<template-engagement_name></template-engagement_name>"))
 					lineHtml = lineHtml.Replace("<template-engagement_name></template-engagement_name>", speakingEngagment.ShindigName);
 				if (lineHtml.Contains("<template-engagement_summarymeta></template-engagement_summarymeta>"))
-					lineHtml = lineHtml.Replace("<template-engagement_summarymeta></template-engagement_summarymeta>", speakingEngagment.ShindigSummary);
+					lineHtml = lineHtml.Replace("<template-engagement_summarymeta></template-engagement_summarymeta>", $"<meta name=\"summary\" content=\"{speakingEngagment.ShindigSummary}\"");
 				if (lineHtml.Contains("<template-engagement_dates></template-engagement_dates>"))
 					lineHtml = lineHtml.Replace("<template-engagement_dates></template-engagement_dates>", DateRangeToString(speakingEngagment.StartDate, speakingEngagment.EndDate));
 				if (lineHtml.Contains("<template-engagment_description></template-engagment_description>"))
@@ -100,15 +110,22 @@ internal class SpeakingEnagementServices3 : ServicesBase3
 				{
 					await File.WriteAllTextAsync(pathWithWorkingDirectory, pageHtml.ToString());
 					AddFileToGetIndex(pathInWorkingDirectory);
+					return true;
+				}
+				else
+				{
+					return false;
 				}
 			}
 			else
 			{
 				await File.WriteAllTextAsync(pathWithWorkingDirectory, pageHtml.ToString());
 				AddFileToGetIndex(pathInWorkingDirectory);
+				return true;
 			}
 
 		}
+		return false;
 	}
 
 	private string AddEngagementListing(List<Shindig> shindigs)

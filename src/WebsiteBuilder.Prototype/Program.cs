@@ -24,20 +24,24 @@ if (accessToken is not null)
 	using Repository repository = new(workingDirectoryPath);
 	Checkout(repository);
 
-	SpeakingEnagementServices3 speakingEnagementServices = new(
+	SpeakingEnagementServices speakingEnagementServices = new(
 		websiteBuilderContext,
 		repository,
 		workingDirectoryPath,
 		upcomingSpeakingEngagements);
 
 	progressBar.Tick("Building speaking engagements listing page...");
-	await speakingEnagementServices.BuildSpeakingEngagmentListAsync(speakingEngagements);
+	bool speakingEngagementListingChanges = await speakingEnagementServices.BuildSpeakingEngagmentListAsync(speakingEngagements);
 
 	progressBar.Tick("Building speaking engagement detail pages...");
-	await speakingEnagementServices.BuildSpeakingEngagmentPagesAsync(speakingEngagements, progressBar);
+	bool speakingEngagementDetailChanges = await speakingEnagementServices.BuildSpeakingEngagmentPagesAsync(speakingEngagements, progressBar);
 
-	Commit(repository);
-	Push(repository);
+	if (speakingEngagementListingChanges || speakingEngagementDetailChanges)
+	{
+		progressBar.Tick("Committing changes to the git repository...");
+		Commit(repository);
+		Push(repository);
+	}
 
 }
 

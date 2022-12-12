@@ -3,7 +3,8 @@ GO
 
 MERGE dbo.Template AS TARGET
 USING (VALUES ( 1, 1, 1, 'Footer',                      'template_footer.html'),
-              ( 2, 2, 1, 'Speaking Engagement Listing', 'template_speaking-engagements.html'))
+              ( 2, 2, 1, 'Speaking Engagement Listing', 'template_speaking-engagements.html'),
+              ( 3, 3, 1, 'Speaking Engagement Details', 'template_speaking-engagement.html'))
 AS SOURCE (TemplateId,
            TemplateTypeId,
            IsActive,

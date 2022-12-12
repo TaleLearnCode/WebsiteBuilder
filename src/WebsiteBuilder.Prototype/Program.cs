@@ -30,7 +30,11 @@ if (accessToken is not null)
 		workingDirectoryPath,
 		upcomingSpeakingEngagements);
 
+	progressBar.Tick("Building speaking engagements listing page...");
 	await speakingEnagementServices.BuildSpeakingEngagmentListAsync(speakingEngagements);
+
+	progressBar.Tick("Building speaking engagement detail pages...");
+	await speakingEnagementServices.BuildSpeakingEngagmentPagesAsync(speakingEngagements, progressBar);
 
 	Commit(repository);
 	Push(repository);

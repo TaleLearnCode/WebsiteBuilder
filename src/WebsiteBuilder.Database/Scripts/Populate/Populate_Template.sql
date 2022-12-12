@@ -4,7 +4,8 @@ GO
 MERGE dbo.Template AS TARGET
 USING (VALUES ( 1, 1, 1, 'Footer',                      'template_footer.html'),
               ( 2, 2, 1, 'Speaking Engagement Listing', 'template_speaking-engagements.html'),
-              ( 3, 3, 1, 'Speaking Engagement Details', 'template_speaking-engagement.html'))
+              ( 3, 3, 1, 'Speaking Engagement Details', 'template_speaking-engagement.html'),
+              ( 4, 4, 1, 'Presentation Listing',        'template_presentations.html'))
 AS SOURCE (TemplateId,
            TemplateTypeId,
            IsActive,

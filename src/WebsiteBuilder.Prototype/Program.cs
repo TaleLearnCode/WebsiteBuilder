@@ -9,11 +9,12 @@ string? accessToken = Console.ReadLine();
 if (accessToken is not null)
 {
 
-	using ProgressBar progressBar = new(5, "Retrieving website data...");
+	using ProgressBar progressBar = new(6, "Retrieving website data...");
 
 	using WebsiteBuilderContext websiteBuilderContext = new();
 	List<Shindig> speakingEngagements = await websiteBuilderContext.Shindigs.ToListAsync();
 	List<Shindig> upcomingSpeakingEngagements = speakingEngagements.Where(x => x.StartDate >= DateTime.UtcNow).ToList();
+	List<Presentation> presentations = await websiteBuilderContext.Presentations.ToListAsync();
 
 	progressBar.Tick("Connecting to the git repository...");
 	if (!Directory.Exists(workingDirectoryPath) || Pull() == MergeStatus.Conflicts)
@@ -24,11 +25,8 @@ if (accessToken is not null)
 	using Repository repository = new(workingDirectoryPath);
 	Checkout(repository);
 
-	SpeakingEnagementServices speakingEnagementServices = new(
-		websiteBuilderContext,
-		repository,
-		workingDirectoryPath,
-		upcomingSpeakingEngagements);
+	SpeakingEnagementServices speakingEnagementServices = new(websiteBuilderContext, repository, workingDirectoryPath, upcomingSpeakingEngagements);
+	PresentationServices presentationServices = new(websiteBuilderContext, repository, workingDirectoryPath, upcomingSpeakingEngagements);
 
 	progressBar.Tick("Building speaking engagements listing page...");
 	bool speakingEngagementListingChanges = await speakingEnagementServices.BuildSpeakingEngagmentListAsync(speakingEngagements);
@@ -36,7 +34,10 @@ if (accessToken is not null)
 	progressBar.Tick("Building speaking engagement detail pages...");
 	bool speakingEngagementDetailChanges = await speakingEnagementServices.BuildSpeakingEngagmentPagesAsync(speakingEngagements, progressBar);
 
-	if (speakingEngagementListingChanges || speakingEngagementDetailChanges)
+	progressBar.Tick("Buidling presentation listing page...");
+	bool presentationListingChanges = await presentationServices.BuildListingPageAsync(presentations);
+
+	if (speakingEngagementListingChanges || speakingEngagementDetailChanges || presentationListingChanges)
 	{
 		progressBar.Tick("Committing changes to the git repository...");
 		Commit(repository);

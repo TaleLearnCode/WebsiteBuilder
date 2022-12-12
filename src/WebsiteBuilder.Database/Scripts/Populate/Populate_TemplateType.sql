@@ -1,7 +1,8 @@
 ﻿MERGE dbo.TemplateType AS TARGET
 USING (VALUES ( 1, 'Footer',                  'footer.html'),
               ( 2, 'SpeakingEngagementList',  'speaking-engagements.html'),
-              ( 3, 'SpeakingEngagementDetail', NULL))
+              ( 3, 'SpeakingEngagementDetail', NULL),
+              ( 4, 'PresentationList',        'presentations.html'))
 AS SOURCE (TemplateTypeId,
            TemplateTypeName,
            Permalink)

@@ -39,7 +39,21 @@ USING (VALUES ( 1, '.NET'),
               (35, 'Cosmos DB'),
               (36, 'Event-Driven Architecture'),
               (37, 'NoSQL'),
-              (38, 'Integrations'))
+              (38, 'Integrations'),
+              (39, 'Event Hubs'),
+              (40, 'Leadership'),
+              (41, 'Chat'),
+              (42, 'SMS'),
+              (43, 'Telephony'),
+              (44, 'Video Calling'),
+              (45, 'Voice'),
+              (46, 'Azure Storage'),
+              (47, 'Graph Data'),
+              (48, 'TinkerPop'),
+              (49, '.NET Framework'),
+              (50, '.NET Standard'),
+              (51, 'Google Events'),
+              (52, 'Microsoft Events'))
 AS SOURCE (TagId,
            TagName)
 ON TARGET.TagId = SOURCE.TagId

@@ -48,8 +48,18 @@ internal abstract class ServicesBase
 			templateLine = templateLine.Replace("<template_upcomingspeakingengagementslist></template_upcomingspeakingengagementslist>", AddUpcomingShindigListing());
 		if (templateLine.Contains("<template_upcomingmeetups></template_upcomingmeetups>"))
 			templateLine = templateLine.Replace("<template_upcomingmeetups></template_upcomingmeetups>", AddUpcomingMeetupsListing());
+		if (templateLine.Contains("<template_head></template_head>"))
+			templateLine = templateLine.Replace("<template_head></template_head>", await AddTemplateAsync(TemplateTypeIdValues.Head));
+		if (templateLine.Contains("<template_topbar></template_topbar>"))
+			templateLine = templateLine.Replace("<template_topbar></template_topbar>", await AddTemplateAsync(TemplateTypeIdValues.Topbar));
+		if (templateLine.Contains("<template_header></template_header>"))
+			templateLine = templateLine.Replace("<template_header></template_header>", await AddTemplateAsync(TemplateTypeIdValues.Header));
 		if (templateLine.Contains("<template_footer></template_footer>"))
-			templateLine = templateLine.Replace("<template_footer></template_footer>", await AddFooterAsync());
+			templateLine = templateLine.Replace("<template_footer></template_footer>", await AddTemplateAsync(TemplateTypeIdValues.Footer));
+		if (templateLine.Contains("<template_preloader></template_preloader>"))
+			templateLine = templateLine.Replace("<template_preloader></template_preloader>", await AddTemplateAsync(TemplateTypeIdValues.Preloader));
+		if (templateLine.Contains("<template_javascript-includes></template_javascript-includes>"))
+			templateLine = templateLine.Replace("<template_javascript-includes></template_javascript-includes>", await AddTemplateAsync(TemplateTypeIdValues.JavascriptIncludes));
 		return templateLine;
 	}
 
@@ -123,10 +133,22 @@ internal abstract class ServicesBase
 		return response.ToString();
 	}
 
-	protected async Task<string> AddFooterAsync()
+	//protected async Task<string> AddFooterAsync()
+	//{
+	//	StringBuilder response = new();
+	//	if (TryGetTemplateDetails(TemplateTypeIdValues.Footer, out Template? templateDetails) && templateDetails is not null)
+	//	{
+	//		List<string> template = await ReadTemplateAsync(templateDetails.TemplateFileName);
+	//		foreach (string templateLine in template)
+	//			response.AppendLine(await GlobalReplacements(templateLine));
+	//	}
+	//	return response.ToString();
+	//}
+
+	protected async Task<string> AddTemplateAsync(int templateTypeId)
 	{
 		StringBuilder response = new();
-		if (TryGetTemplateDetails(TemplateTypeIdValues.Footer, out Template? templateDetails) && templateDetails is not null)
+		if (TryGetTemplateDetails(templateTypeId, out Template? templateDetails) && templateDetails is not null)
 		{
 			List<string> template = await ReadTemplateAsync(templateDetails.TemplateFileName);
 			foreach (string templateLine in template)

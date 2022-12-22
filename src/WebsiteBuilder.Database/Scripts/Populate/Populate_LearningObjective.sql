@@ -65,14 +65,78 @@ USING (VALUES
 
               -- Going Schema-less: How to migrate a relational database to a NoSQL database
               (37, 14, 1, 'Learn about the pros and cons of developing with a NoSQL data model over a relational data model'),
-              (38, 14, 1, 'Learn how to migrate data from a relational data model to a NoSQL data model'),
-              (39, 14, 1, 'Learn how to develop a .NET application to use a Cosmos DB NoSQL data model'))
+              (38, 14, 2, 'Learn how to migrate data from a relational data model to a NoSQL data model'),
+              (39, 14, 3, 'Learn how to develop a .NET application to use a Cosmos DB NoSQL data model'),
 
               
-              ---- Technical Debt Is Not Free
-              --( 4, 2, 1, 'Understand what technical debt is and how to measure it'),
-              --( 5, 2, 2, 'Understand how to track technical debt in a way meaningful for developers and the business'),
-              --( 6, 2, 3, 'Learn ways to combat technical debt'))
+              -- Technical Debt Is Not Free
+              (40, 15, 1, 'Understand what technical debt is and how to measure it'),
+              (41, 15, 2, 'Understand how to track technical debt in a way meaningful for developers and the business'),
+              (42, 15, 3, 'Learn ways to combat technical debt'),
+
+              -- Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
+              (43, 16, 1, 'Learn how the Azure Cosmos DB change feed works'),
+              (44, 16, 2, 'Learn how to build robust applications that can react to changes within the database'),
+              (45, 16, 3, 'See real-world examples of how to implement the most common use cases for the change feed'),
+
+              -- Software Craftsmanship for New Developers
+              (46, 18, 1, 'Learn what exactly is software craftsmanship is and how it can improve your development teams'),
+              (47, 18, 2, 'Learn what technical debt is, how it can be helpful when used wisely, and how to minimize debt and not go bankrupt'),
+              (48, 18, 3, 'Get a high-level understanding of what SOLID principles and other fundamental principles'),
+              (49, 18, 4, 'Understand critical principles such as SOLID, DRY, KISS, and YANGI and practices such as TDD, pair programming, and coding dojos are and how they can help your team build high-quality software'),
+              (50, 18, 5, 'Understand what code smells are, how to detect them, and how to help your team steer clear of them'),
+
+              -- Serverless in Action
+              (51, 19, 1, 'Learn the what is serverless computing'),
+              (52, 19, 2, 'Learn what is Azure Functions and how to use it to develop business-critical functionality'),
+              (53, 19, 3, 'Learn about the different Azure Function triggers and bindings that allow you to tie in many other Azure resources'),
+              
+              -- Event-Driven Architecture in the Cloud
+              (54, 20, 1, 'Learn the basics of event-driven architecture'),
+              (55, 20, 2, 'Learn how to transform your complex systems to become event driven'),
+              (56, 20, 3, 'Learn about the benefits event-driven architecture brings to your business'),
+
+              -- The Hitchhiker's Guide to the Cosmos
+              (57, 21, 1, 'Learn about the different Azure Cosmos DB data models'),
+              (58, 21, 2, 'Learn how to use the benefits of Azure Cosmos DB to build the best data solution'),
+              (59, 21, 3, 'Learn about some of the common Cosmos DB use cases'),
+
+              -- Serverless Microservices: Microservices without Containers
+              (60, 22, 1, 'Understand the concepts and benefits of microservice architectures'),
+              (61, 22, 2, 'Understand what exactly serverless technologies are and their benefits'),
+              (62, 22, 3, 'See firsthand how-to user serverless technologies to implement a microservice architecture'),
+
+              -- How to be a Leader
+              (63, 23, 1, 'Understand the 14 Marine Corps leadership traits and how to apply them to your software development teams'),
+              (64, 23, 2, 'Understand the basics of leadership'),
+              (65, 23, 3, 'Understand the difference between a boss or manager and a leader'),
+
+              -- Intro to Azure Communication Services
+              (66, 24, 1, 'Learn about the new Azure Communication Services'),
+              (67, 24, 2, 'Learn how to use Azure Communication Services to send and received SMS messages'),
+
+              -- Building a .NET Application Using Azure Cosmos DB
+              (68, 25, 1, 'Understand how to use Azure Cosmos DB within a .NET Core application'),
+              (69, 25, 2, 'Learn about the pitfalls to watch out for when using Azure Cosmos DB'),
+
+              -- Graphing Your Way Through the Cosmos
+              (70, 26, 1, 'Understand the basics of graph databases'),
+              (71, 26, 2, 'See real world examples of graph databases with common business data problems'),
+              (72, 26, 3, 'Understand best practices in building graphing data solutions'),
+
+              -- Which Microsoft Framework Am I Supposed to Use
+              (73, 27, 1, 'Understand the history of Microsoft development strategies and how this brought on the development paradigms available now'),
+              (74, 27, 2, 'Understand the differences between .NET Framework, .NET Core, and .NET Standard'),
+              (75, 27, 3, 'Understand when to use one Microsoft .NET framework over another'),
+
+              -- Chad and Ed’s Excellent Adventure!
+              (76, 28, 1, 'Learn about announcements at Google I/O 2018'),
+              (77, 28, 2, 'Learn about announcements at Microsoft Build 2018'),
+
+              -- .NET Conf Keynote Review
+              (78, 29, 1, 'Understand the announcements made during the 2018 .NET Conf conference')
+
+              )
               
               
 AS SOURCE (LearningObjectiveId,

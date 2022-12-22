@@ -2,7 +2,9 @@
 GO
 
 MERGE dbo.PresentationType AS TARGET
-USING (VALUES ( 1, '45-75 minute session'))
+USING (VALUES ( 1, '45-75 minute session'),
+              ( 2, 'Full-day workshop'),
+              ( 3, 'Two-day workshop'))
 AS SOURCE (PresentationTypeId,
            PresentationTypeName)
 ON TARGET.PresentationTypeId = SOURCE.PresentationTypeId

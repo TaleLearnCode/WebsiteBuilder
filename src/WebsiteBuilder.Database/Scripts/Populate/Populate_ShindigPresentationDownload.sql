@@ -48,16 +48,103 @@ USING (VALUES
               ( 30, 30, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-BeerCityCode2019.pdf'),              -- Beer City Code
               ( 31, 31, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-LouisvilleTechLadiesJune2019.pdf'),  -- Louisville Tech Ladies
               ( 32, 32, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-Tulsa2022.pdf'),                     -- Tulsa .NET User Group
-              ( 33, 33, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-PDCRegina2022.pdf')                  -- Prairie Dev Con - Regina
+              ( 33, 33, 'Slides', 'https://github.com/TaleLearnCode/SecretsOfConflictResolution/blob/main/Presentations/SecretsOfConflictResolution-PDCRegina2022.pdf'),                 -- Prairie Dev Con - Regina
               
-              ---- Going Schema-less: How to migrate a relational database to a NoSQL database
-              --( 34, 34, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_THAT.pdf'),      -- THAT
-              --( 35, 35, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_Momentum.pdf'),  -- Momentum Developer Conference
-              --( 36, 36, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_AtlantaCodeCamp.pdf'),                     -- Atlanta Code Camp
-              --( 37, 37, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_KCDC.pdf'),                                -- KCDC
-              --( 38, 38, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_Tulsa.pdf'),                               -- Tulsa .NET User Group
-              --( 39, 39, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_THAT.pdf'),                                -- THAT
-              --( 40, 40, 'Slides', 'https://bit.ly/3ehtuGH')                                                                                  -- Nebraska.Code
+              -- Going Schema-less: How to migrate a relational database to a NoSQL database
+              ( 34, 34, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_THAT.pdf'),      -- THAT
+              ( 35, 35, 'Slides', 'https://github.com/TaleLearnCode/GoingSchemaless/blob/main/presentations/GoingSchemaless_Momentum.pdf'),  -- Momentum Developer Conference
+              ( 36, 36, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_AtlantaCodeCamp.pdf'),                     -- Atlanta Code Camp
+              ( 37, 37, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaless_KCDC.pdf'),                                -- KCDC
+              ( 38, 38, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_Tulsa.pdf'),                               -- Tulsa .NET User Group
+              ( 39, 39, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/GoingSchemaLess_THAT.pdf'),                                -- THAT
+              ( 40, 40, 'Slides', 'https://bit.ly/3ehtuGH'),                                                                                 -- Nebraska.Code
+
+              -- Technical Debt Is Not Free
+              ( 41, 41, 'Slides', 'https://github.com/TaleLearnCode/TechnicalDebtIsNotFree/blob/main/Presentations/TechnicalDebitIsNotFree_ScenicCitySummit.pdf'), -- Scenic City Summit 2022
+              ( 42, 42, 'Slides', 'https://github.com/TaleLearnCode/TechnicalDebtIsNotFree/blob/main/Presentations/TechnicalDebitIsNotFree-LouDotNet.pdf'),        -- Louisville .NET Meetup - July 2022
+              ( 43, 43, 'Slides', 'https://github.com/TaleLearnCode/TechnicalDebtIsNotFree/blob/main/Presentations/TechnicalDebitIsNotFree_NebraskaCode.pdf'),     -- Nebraska.Code() 2022
+              ( 44, 44, 'Slides', 'https://github.com/TaleLearnCode/TechnicalDebtIsNotFree/blob/main/Presentations/TechnicalDebitIsNotFree_DevUp.pdf'),            -- dev up 2022
+
+              -- Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
+              ( 45, 45, 'Available Afterwards', NULL),                                                                                                                                                  -- TechBash 2022
+              ( 46, 46, 'Slides', 'https://github.com/TaleLearnCode/Ch-ch-ch-changes-Tracing-Changes-in-Azure-Cosmos-DB/blob/main/Presentations/ChChChChanges-DevUp.pdf'),                              -- dev up
+              ( 47, 47, 'Available Afterwards', NULL),                                                                                                                                                  -- Music City Tech
+              ( 48, 48, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/ChChChChanges-KCDC.pdf'),                                                                                             -- KCDC
+              ( 49, 49, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Ch-ch-ch-changes%20-%20Tracing%20Changes%20in%20Azure%20Cosmos%20DB%20-%20Hampton%20Roads%20Net%20User%20Group.pdf'), -- Hampton Roads .NET User Group
+
+              -- What’s New for C# Developers
+              ( 50, 50, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/WhatsNewForCSharpDevelopers-LouDotNet.pdf'),                                                                          -- Louisville .NET Meetup
+              ( 51, 51, 'Available Afterwards', NULL),                                                                                                                                                  -- Tulsa .NET Meetup
+              ( 52, 52, 'Available Afterwards', NULL),                                                                                                                                                  -- Glennis Solutions
+
+              -- Software Craftsmanship for New Developers
+              ( 53, 53, 'Available Afterwards', NULL),                                                                                                                                                  -- Nashville Women Programmers
+              ( 54, 54, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/SoftwareCraftsmanshipForNewDevelopers-LouDotNet.pdf'),                                                                -- Louisville .NET Meetup
+              ( 55, 55, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/SoftwareCraftsmanshipForNewDevelopers-Nebraska2021.pdf'),                                                             -- Nebraska.Code()
+              ( 56, 56, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/SoftwareCraftsmanshipForNewDevelopers-SoftwareGuild.pdf'),                                                            -- Software Guild
+              ( 57, 57, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/SoftwareCraftsmanshipForNewDevelopers-TechFoundationsLouisville.pdf'),                                                -- Tech Foundations Louisville
+
+              -- Serverless in Action
+              ( 58, 58, 'Available Afterwards', NULL),                                                                                                                                                  -- Roanoke Valley .NET User Group
+              ( 59, 59, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Serverless%20in%20Action%20-%20TechBash.pdf'),                                                                        -- TechBash
+              ( 60, 60, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Serverless%20in%20Action%20-%20DevSpace.pdf'),                                                                        -- DevSpace
+              ( 61, 61, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/From%20Zero%20to%20Serverless%20-%20Scenic%20City%20Summit.pdf'),                                                     -- Scenic City Simmit
+              ( 62, 62, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Serverless%20in%20Action%20-%20CodeStock.pdf'),                                                                        -- CodeStock
+              ( 63, 63, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/From%20Zero%20to%20Serverless%20-%20CodeMash.pdf'),                                                                   -- CodeMash
+              ( 64, 64, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/From%20Zero%20to%20Serverless%20-%20DogFoodCon%20(No%20Connectivity).pdf'),                                           -- DogFoodCon
+              ( 65, 65, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/From%20Zero%20to%20Serverless%20-%20CoderCruise.pdf'),                                                                 -- CoderCruise
+              ( 66, 66, 'N/A', NULL),                                                                                                                                                                   -- StirTrek
+              ( 67, 67, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/From%20Zero%20to%20Serverless%20-%20Louisville%20.NET%20Meetup.pdf'),                                                 -- Louisville .NET Meetup
+
+              -- Event-Driven Architecture in the Cloud
+              ( 69, 69, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/EventDrivenArchictureInTheCloud-MusicCityCode.pdf'),                                                                  -- Music City Code
+              ( 70, 70, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/EventDrivenArchictureInTheCloud-DevSpace.pdf'),                                                                       -- DevSpace
+              ( 71, 71, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/EventDrivenArchictureInTheCloud-CincyDeliver.pdf'),                                                                   -- CincyDeliver
+              ( 72, 72, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Event-Driven%20Architecture%20in%20the%20Cloud%20-%20Dallas%20&%20Austin%20Azure%20Meetup.pdf'),                      -- Dallas & Austin Azure Meetup
+              ( 74, 74, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Event-Driven%20Architecture%20in%20the%20Cloud%20-%20TechBash.pdf'),                                                  -- TechBash
+              ( 75, 75, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Event-Driven%20Architecture%20in%20the%20Cloud%20-%20Louisville%20.NET.pdf'),                                         -- Louisville .NET Meetup
+              ( 76, 76, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Event-Driven%20Architecture%20in%20the%20Cloud%20-%20DevUp.pdf'),                                                     -- devup
+              ( 77, 77, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Event-Driven%20Architecture%20in%20the%20Cloud%20-%20Little%20Rock%20Tech%20Fest.pdf'),                               -- Little Rock Tech Fest
+
+              -- The Hitchhiker's Guide to the Cosmos
+              ( 79, 79, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/HitchhickersGuideToTheCosmos-MusicCityTech.pdf'),                                                                     -- Music City Tech
+              ( 80, 80, 'Available Afterwards', NULL),                                                                                                                                                  -- Dallas & Austin Azure Meetup
+              ( 81, 81, 'Slides', 'https://github.com/TaleLearnCode/HitchhikersGuideToCosmos/blob/master/Presentations/The%20Hitchhicker''s%20Guide%20to%20the%20Cosmos%20-%20TDevConf.pdf'),           -- TDevConf
+              ( 84, 84, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Graphing%20Your%20Way%20Through%20the%20Cosmos%20-%20Ignite%20Government.pptx'),                                      -- Ignite the Tour Government
+              ( 85, 85, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/The%20Hitchhicker%27s%20Guide%20to%20the%20Cosmos%20-%20DevSpace.pdf'),                                               -- DevSpace
+              ( 86, 86, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/The%20Hitchhicker%27s%20Guide%20to%20the%20Cosmos%20-%20Atlanta%20Code%20Camp.pdf'),                                  -- Atlanta Code Camp
+
+              -- Serverless Microservices: Microservices without Containers
+              ( 87, 87, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/ServerlessMicroservices-MicroservicesWithoutContainers_CincyDeliver2021.pdf'),                                        -- Cincy Deliver
+
+              -- How to be a Leader
+              ( 88, 88, 'Available Afterwards', NULL),                                                                                                                                                  -- Tulsa .NET User Group
+              ( 89, 89, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/How%20to%20be%20a%20Leader%20-%20Music%20City%20Tech.pdf'),                                                           -- Music City Tech
+              ( 90, 90, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/How%20to%20be%20a%20Leader%20-%20Nebraska.Code().pdf'),                                                               -- Nebraska.Code
+              ( 92, 92, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/How%20to%20be%20a%20Leader%20-%20CodeStock.pdf'),                                                                     -- CodeStock
+
+              -- Intro to Azure Communication Services
+              ( 93, 93, 'Available Afterwards', NULL),                                                                                                                                                  -- Columbus App Dev User Group
+
+              -- Building a .NET Application Using Azure Cosmos DB
+              ( 94, 94, 'Availalbe Afterwards', NULL),                                                                                                                                                  -- Dallas & Austin Azure Meetup
+              ( 95, 95, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Building%20a%20.NET%20Application%20Using%20Azure%20Cosmos%20DB%20-%20Tulsa%20.NET%20User%20Group.pdf'),              -- Tulsa .NET User Group
+              (950, 95, 'Demo COde', 'https://github.com/TaleLearnCode/BuildingDotNetAppUsingCosmosDB/tree/main/Demos/Tutorial'),                                                                       -- Tulsa .NET User Group
+
+              -- Graphing Your Way Through the Cosmos
+              ( 96,  96, 'Availalbe Afterwards', NULL),                                                                                                                                                  -- Granite State Code Camp
+              ( 97,  97, 'Availalbe Afterwards', NULL),                                                                                                                                                  -- NDC Sydney
+              (101, 101, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Graphing%20Your%20Way%20Through%20the%20Cosmos%20-%20SFSDC.pdf'),                                                     -- South Florida Developers Conference
+              (102, 102, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/The%20Hitchhicker%27s%20Guide%20to%20the%20Cosmos%20-%20Ignite%20Government.pptx'),                                   -- Microsoft Ignite the Tour Government
+              (103, 103, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Graphing%20Your%20Way%20Through%20the%20Cosmos%20-%20CodeMash%202020.pdf'),                                           -- CodeMash
+              (104, 104, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Graphing%20Your%20Way%20Through%20the%20Cosmos%20-%20TechBash.pdf'),                                                  -- TechBash
+              (105, 105, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Graphing%20Your%20Way%20Through%20the%20Cosmos%20-%20DogFoodCon.pdf'),                                                -- DogFoodCon
+
+              -- Which Microsoft Framework Am I Supposed to Use
+              (106, 106, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20KCDC.pdf'),                           -- KCDC
+              (107, 107, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20Louisville%20NET%20Meetup.pdf'),      -- Louisville .NET Meetup
+              (108, 108, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20Evansville%20Technology%20Group.pdf') -- Evansville Technology Group
+              
               
               
               )

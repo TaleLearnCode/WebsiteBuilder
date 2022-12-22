@@ -9,7 +9,7 @@
   Room                  NVARCHAR(50)     NULL,
   CONSTRAINT pkcShindigPresentation PRIMARY KEY CLUSTERED (ShindigPresentationId),
   CONSTRAINT fkShindigPresentation_Shindig       FOREIGN KEY (ShindigId)      REFERENCES dbo.Shindig (ShindigId),
-  CONSTRAINT fkShindigPresentation_Presentatiton FOREIGN KEY (PresentationId) REFERENCES dbo.Presentation (PresentationId)
+  CONSTRAINT fkShindigPresentation_Presentation FOREIGN KEY (PresentationId) REFERENCES dbo.Presentation (PresentationId)
 )
 GO
 
@@ -31,5 +31,5 @@ EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'ShindigPresentatio
 GO
 EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'ShindigPresentation', @level2name=N'fkShindigPresentation_Shindig',       @value=N'Defines the relationship between the ShindigPresentation and Shindig tables using the ShindigId column.',           @name=N'MS_Description', @level0type=N'SCHEMA', @level1type=N'TABLE', @level2type=N'CONSTRAINT';
 GO
-EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'ShindigPresentation', @level2name=N'fkShindigPresentation_Presentatiton', @value=N'Defines the relationship between the ShindigPresentation and Presentation tables using the PresentationId column.', @name=N'MS_Description', @level0type=N'SCHEMA', @level1type=N'TABLE', @level2type=N'CONSTRAINT';
+EXEC sp_addextendedproperty @level0name=N'dbo', @level1name=N'ShindigPresentation', @level2name=N'fkShindigPresentation_Presentation', @value=N'Defines the relationship between the ShindigPresentation and Presentation tables using the PresentationId column.', @name=N'MS_Description', @level0type=N'SCHEMA', @level1type=N'TABLE', @level2type=N'CONSTRAINT';
 GO

@@ -2,11 +2,16 @@
 GO
 
 MERGE dbo.Template AS TARGET
-USING (VALUES ( 1, 1, 1, 'Footer',                      'template_footer.html'),
-              ( 2, 2, 1, 'Speaking Engagement Listing', 'template_speaking-engagements.html'),
-              ( 3, 3, 1, 'Speaking Engagement Details', 'template_speaking-engagement.html'),
-              ( 4, 4, 1, 'Presentation Listing',        'template_presentations.html'),
-              ( 5, 5, 1, 'Presentation Details',        'template_presentation.html'))
+USING (VALUES ( 1,  1, 1, 'Footer',                      'template_footer.html'),
+              ( 2,  2, 1, 'Speaking Engagement Listing', 'template_speaking-engagements.html'),
+              ( 3,  3, 1, 'Speaking Engagement Details', 'template_speaking-engagement.html'),
+              ( 4,  4, 1, 'Presentation Listing',        'template_presentations.html'),
+              ( 5,  5, 1, 'Presentation Details',        'template_presentation.html'),
+              ( 6,  6, 1, 'Preloader',                   'template_preloader.html'),
+              ( 7,  7, 1, 'Javascript Includes',         'template_javascript-includes.html'),
+              ( 8,  8, 1, 'Head',                        'template_head.html'),
+              ( 9,  9, 1, 'Header',                      'template_header.html'),
+              (10, 10, 1, 'Topbar',                      'template_topbar.html'))
 AS SOURCE (TemplateId,
            TemplateTypeId,
            IsActive,

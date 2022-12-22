@@ -151,13 +151,13 @@ internal class PresentationServices : ServicesBase
 				response.AppendLine($"              <div class=\"mask s2\">");
 				response.AppendLine($"                <div class=\"cover\">");
 				response.AppendLine($"                  <div class=\"c-inner\">");
-				response.AppendLine($"                    <h3><i class=\"fa fa-circle-thin\"></i><span>{presentation.PresentationTitle}</span></h3>");
+				response.AppendLine($"                    <h3><i class=\"fa fa-circle-thin\"></i><span>{presentation.PresentationShortTitle}</span></h3>");
 				response.AppendLine($"                    <p>{presentation.Summary}</p>");
 				response.AppendLine($"                    <div class=\"spacer20\"></div>");
 				response.AppendLine($"                    <a href=\"{presentation.Permalink}.html\" class=\"btn-custom capsule\">Presentation Details</a>");
 				response.AppendLine($"                  </div>");
 				response.AppendLine($"                </div>");
-				response.AppendLine($"                <img src=\"images/presentations/{presentation.Permalink}.jpg\" alt=\"{presentation.PresentationTitle}\" class=\"img-responsive\" />");
+				response.AppendLine($"                <img src=\"images/presentations/{presentation.Permalink}.jpg\" alt=\"{presentation.PresentationShortTitle}\" class=\"img-responsive\" />");
 				response.AppendLine($"              </div>");
 				response.AppendLine($"            </div>");
 			}

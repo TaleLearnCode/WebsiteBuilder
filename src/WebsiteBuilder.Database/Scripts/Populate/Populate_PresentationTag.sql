@@ -178,7 +178,117 @@ USING (VALUES
               (146, 14, 23),
               (147, 14, 24),
               (148, 14, 37),
-              (149, 14, 27))
+              (149, 14, 27),
+              
+              -- Technical Debt Is Not Free
+              (150, 15, 15),
+              (151, 15,  6),
+              (152, 15, 16),
+              (153, 15, 17),
+              (154, 15, 18),
+              (155, 15, 19),
+              (156, 15, 20),
+              (157, 15, 21),
+              
+              -- Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
+              (158, 16,  3),
+              (159, 16,  4),
+              (160, 16, 35),
+              (161, 16, 23),
+              (162, 16, 36),
+              (163, 16, 11),
+
+              -- What’s New for C# Developers
+              (164, 17,  7),
+              (165, 17,  1),
+
+              -- Software Craftsmanship for New Developers
+              (166, 18, 19),
+              (167, 18, 22),
+
+              -- Serverless in Action
+              (168, 19,  3),
+              (169, 19,  4),
+              (170, 19,  5),
+              (171, 19,  8),
+              (172, 19, 14),
+
+              -- Event-Driven Architecture in the Cloud
+              (173, 20,  3),
+              (174, 20, 36),
+              (175, 20,  4),
+              (176, 20,  5),
+              (177, 20,  8),
+              (178, 20, 35),
+              (179, 20, 39),
+
+              -- The Hitchhiker's Guide to the Cosmos
+              (180, 21,  4),
+              (181, 21,  8),
+              (182, 21, 35),
+              (183, 21, 23),
+              (184, 21, 24),
+              (185, 21, 37),
+
+              -- Serverless Microservices: Microservices without Containers
+              (186, 22,  1),
+              (187, 22, 32),
+              (188, 22,  3),
+              (189, 22,  4),
+              (190, 22,  5),
+              (191, 22,  7),
+              (192, 22,  8),
+              (193, 22, 11),
+              (194, 22, 14),
+
+              -- How to be a Leader
+              (195, 23, 40),
+              (196, 23, 22),
+
+              -- Intro to Azure Communication Services
+              (197, 24,  4),
+              (198, 24, 41),
+              (199, 24,  8),
+              (200, 24, 42),
+              (201, 24, 43),
+              (202, 24, 44),
+              (203, 24, 45),
+
+              -- Building a .NET Application Using Azure Cosmos DB
+              (204, 25,  4),
+              (205, 25, 46),
+              (206, 25, 35),
+              (207, 25,  1),
+              (208, 25, 32),
+              (209, 25, 23),
+              (210, 25, 24),
+              (211, 25, 37),
+
+              -- Graphing Your Way Through the Cosmos
+              (212, 26,  4),
+              (213, 26, 35),
+              (214, 26,  8),
+              (215, 26, 23),
+              (216, 26, 24),
+              (217, 26, 47),
+              (218, 26, 12),
+              (219, 26, 48),
+
+              -- Which Microsoft Framework Am I Supposed to Use
+              (220, 27,  3),
+              (221, 27,  1),
+              (222, 27, 49),
+              (223, 27, 32),
+              (224, 27, 50),
+
+              -- Chad and Ed’s Excellent Adventure!
+              (225, 28, 51),
+              (226, 28, 52),
+
+              -- .NET Conf Keynote Review
+              (227, 29, 52)
+
+              )
 
               
 AS SOURCE (PresentationTagId,

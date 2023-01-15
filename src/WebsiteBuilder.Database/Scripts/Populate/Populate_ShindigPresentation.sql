@@ -157,7 +157,48 @@ USING (VALUES
               (109, 89, 28, '2018-05-18 19:00', '2018-05-18 20:30', 'EDT', 'Modis'),                   -- Louisville .NET Meetup
 
               -- .NET Conf Keynote Review
-              (110, 84, 29, '2018-10-02 18:00', '2018-10-02 21:00', 'EDT', 'Atria Training Room')      -- Louisville .NET Meetup
+              (110, 84, 29, '2018-10-02 18:00', '2018-10-02 21:00', 'EDT', 'Atria Training Room'),     -- Louisville .NET Meetup
+
+              -- Building Great Libraries with .NET Standard
+              (111, 67, 30, '2019-08-16 15:15', '2019-08-16 16:15', 'CDT', 'Osborne'),                 -- Nebraska.Code 2019
+              (112, 65, 30, '2019-09-07 09:00', '2019-09-07 10:00', 'CDT', '178'),                     -- Music City Tech 2019
+              (113, 64, 30, '2019-09-13 13:15', '2019-09-13 14:15', 'CDT', 'Ballroom North'),          -- Prairie.Code() 2019
+
+              -- Building an Ultra-Scalable API Using Azure Functions
+              (114, 61, 31, '2019-10-04 09:30', '2019-10-04 10:15', 'EDT', '12'),                      -- Scenic City Summit 2019
+              (115, 83, 31, '2018-10-05 14:10', '2018-10-05 15:10', 'EDT', NULL),                      -- DogFoodCon 2018
+
+              -- Delivering Real-Time Data with Azure
+              (116, 58, 32, '2019-10-16 13:00', '2019-10-16 14:00', 'CDT', 'Discovery A'),             -- DevUp 2019
+              (117, 53, 32, '2020-02-29 14:40', '2020-02-29 15:40', 'EST', '2072'),                    -- South Florida Developers Conference 2020
+              (118, 52, 32, '2020-03-28 13:10', '2020-03-28 14:10', 'EDT', 'Room 6'),                  -- Orlando Code Camp & Technical Conference 2020
+
+              -- Azure Durable Functions for Serverless .NET Orchestration
+              (119, 75, 33, '2019-05-26 08:30', '2019-05-26 09:30', 'EDT', NULL),                      -- Stir Trek 2019
+              (120, 39, 33, '2020-05-01 13:15', '2020-05-01 14:15', 'CDT', 'Wabash'),                  -- Indy.Code() 2020
+
+              -- Azure Services Every Developer Needs to Know
+              (121, 78, 34, '2019-01-17 19:00', '2019-01-17 20:30', 'EST', NULL),                      -- Louisville .NET Meetup January 2019
+
+              -- Building Hyper-Scaled Event-Processing Solutions in Azure
+              (122, 58, 35, '2019-10-16 10:30', '2019-10-16 11:30', 'CDT', 'Discovery B'),             -- dev up 2019
+
+              -- Getting Gremlins to Improve Your Data
+              (123,  72, 36, '2019-05-31 09:00', '2019-05-31 17:00', 'EDT', NULL),                      -- Beer City Code 2019
+              (124,  65, 36, '2019-09-05 08:00', '2019-09-05 14:00', 'CDT', '183'),                     -- Music City Tech 2019
+              (125, 107, 36, NULL, NULL, 'CEST', NULL),                                                 -- European Cloud Conference
+
+              -- Getting Started with Azure SQL Database
+              (126,  87, 37, '2018-06-02 09:30', '2018-06-02 10:30', 'EDT', NULL),                      -- Pittsburg TechFest 2018
+              (127,  76, 37, '2019-04-12 10:30', '2019-04-12 11:30', 'CDT', NULL),                      -- CodeStock 2019
+              (128,  73, 37, '2018-05-14 11:20', '2018-05-14 12:20', 'EDT', NULL),                      -- DotNetSouth 2019
+              (129,  69, 37, '2019-07-18 10:00', '2019-07-18 11:00', 'CDT', NULL),                      -- KDCDC 2019
+
+              -- Getting Started with Azure DevOps
+              (130,  81, 38, '2018-12-13 11:30', '2018-12-13 12:30', 'CST', NULL),                      -- Evansville Technology Group - December 2018
+              (131,  80, 38, '2018-12-20 19:00', '2018-12-20 20:30', 'EST', 'Modis'),                   -- Louisville .NET Meetup - December 2018
+              (132,  73, 38, '2019-05-13 11:20', '2019-05-13 12:20', 'EDT', NULL),                      -- DotNetSouth
+              (133,  68, 38, '2019-07-26 13:00', '2019-07-26 14:00', 'EDT', 'Carolina')                 -- Cincy Deliver 2019
 
 
 )

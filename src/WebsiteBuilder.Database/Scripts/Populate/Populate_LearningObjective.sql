@@ -134,8 +134,51 @@ USING (VALUES
               (77, 28, 2, 'Learn about announcements at Microsoft Build 2018'),
 
               -- .NET Conf Keynote Review
-              (78, 29, 1, 'Understand the announcements made during the 2018 .NET Conf conference')
+              (78, 29, 1, 'Understand the announcements made during the 2018 .NET Conf conference'),
 
+              -- Building Great Libraries with .NET Standard
+              (79, 30, 1, 'Understanding the differences between .NET Framework, .NET Core, and .NET Standard'),
+              (80, 30, 2, 'How to use .NET Standard effectively to build cross-platform libraries'),
+              (81, 30, 3, 'Learn key library building concepts such as versioning, strong naming, and binding redirects'),
+
+              -- Building an Ultra-Scalable API Using Azure Functions
+              (82, 31, 1, 'Understand how to architect serverless solutions that offer ultra-scalability'),
+              (83, 31, 2, 'Understand best practices for building solutions with the best scalability options'),
+              (84, 31, 3, 'See real-world examples how to implement ultra-scalable serverless solutions'),
+
+              -- Delivering Real-Time Data with Azure
+              (85, 32, 1, 'Learn how to build real-time dashboards without managing any infrastructure'),
+              (86, 32, 2, 'Learn how to use Event Hubs to ingest vast amounts of data for processing by its consumers'),
+              (87, 32, 3, 'Learn how to implement Azure Stream Analytics to analyze your data in real-time'),
+              (88, 32, 4, 'Learn how to build real-time dashboards with Power BI'),
+
+              -- Azure Durable Functions for Serverless .NET Orchestration
+              (89, 33, 1, 'Understand how to write Durable Azure Functions'),
+              (90, 33, 2, 'Understand patterns and where to use Durable Azure Functions'),
+              (91, 33, 3, 'Understand the best practices for writing stateful orchestrations'),
+
+              -- Azure Services Every Developer Needs to Know
+              (92, 34, 1, 'Understand the basics of Azure services and architecture'),
+              (93, 34, 2, 'Understand the primary services a developer needs to know about to build a robust ASP.NET application'),
+
+              -- Building Hyper-Scaled Event-Processing Solutions in Azure
+              (94, 35, 1, 'Learn how to set up an Azure Event Hub and send and receive events in a .NET application'),
+              (95, 35, 2, 'Learn how to build a real-time dashboard using Stream Analytics and Power BI using data ingested by Azure Event Hubs'),
+              (96, 35, 3, 'Learn how archive events ingested by Azure Event Hubs for long-time storage'),
+              (97, 35, 4, 'Learn how to trigger Azure Functions and Azure Logic Apps from the events within an Event Hub'),
+
+              -- Getting Gremlins to Improve Your Data
+              ( 98, 36, 1, 'Understand the basics of graph databases'),
+              ( 99, 36, 2, 'Get hands-on experience setting up, configuring, and optimizing a graph database'),
+              (100, 36, 3, 'Get hands-on experience working with graph databases in your application'),
+
+              -- Getting Started with Azure SQL Database
+              (101, 37, 1, 'Understand what Azure SQL is and how you can use it to power you applications'),
+
+              -- Getting Started with Azure DevOps
+              (102, 38, 1, 'Learning what exactly DevOps is and what is not'),
+              (103, 38, 2, 'Learning about the different features of Azure DevOps'),
+              (104, 38, 3, 'See first hand how to get started using Azure DevOps to start continuously deliver value to your customers')
               )
               
               

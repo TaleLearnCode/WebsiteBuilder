@@ -53,7 +53,19 @@ USING (VALUES ( 1, '.NET'),
               (49, '.NET Framework'),
               (50, '.NET Standard'),
               (51, 'Google Events'),
-              (52, 'Microsoft Events'))
+              (52, 'Microsoft Events'),
+              (53, 'Case Study'),
+              (54, 'Real-Time Data Analytics'),
+              (55, 'Power BI'),
+              (56, 'ASP.NET'),
+              (57, 'Azure App Service'),
+              (58, 'Azure Monitor'),
+              (59, 'Azure SQL Database'),
+              (60, 'Azure Storage'),
+              (61, 'Azure DevOps'),
+              (62, 'Continous Deployment'),
+              (63, 'Continous Integration'),
+              (64, 'DevOps'))
 AS SOURCE (TagId,
            TagName)
 ON TARGET.TagId = SOURCE.TagId

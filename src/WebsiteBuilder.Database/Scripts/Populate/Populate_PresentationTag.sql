@@ -286,7 +286,76 @@ USING (VALUES
               (226, 28, 52),
 
               -- .NET Conf Keynote Review
-              (227, 29, 52)
+              (227, 29, 52),
+
+              -- Building Great Libraries with .NET Standard
+              (228, 30,  3),
+              (229, 30,  1),
+              (230, 30, 49),
+              (231, 30, 32),
+              (232, 30, 50),
+
+              -- Building an Ultra-Scalable API Using Azure Functions
+              (233, 31,  2),
+              (234, 31,  3),
+              (235, 31,  4),
+              (236, 31, 53),
+              (237, 31,  8),
+              (238, 31, 14),
+
+              -- Delivering Real-Time Data with Azure
+              (239, 32,  8),
+              (240, 32, 54),
+              (241, 32,  4),
+              (242, 32, 55),
+
+              -- Azure Durable Functions for Serverless .NET Orchestration
+              (243, 33,  3),
+              (244, 33,  4),
+              (245, 33,  5),
+              (246, 33, 14),
+
+              -- Azure Services Every Developer Needs to Know
+              (247, 34, 56),
+              (248, 34,  4),
+              (249, 34, 57),
+              (250, 34,  5),
+              (251, 34, 58),
+              (252, 34, 59),
+              (253, 34, 60),
+              (254, 34,  8),
+              (255, 34, 14),
+
+              -- Building Hyper-Scaled Event-Processing Solutions in Azure
+              (256, 35, 36),
+              (257, 35,  3),
+              (258, 35,  4),
+              (259, 35,  8),
+
+              -- Getting Gremlins to Improve Your Data
+              (260, 36,  3),
+              (261, 36,  4),
+              (262, 36, 35),
+              (263, 36, 23),
+              (264, 36, 24),
+              (265, 36, 47),
+
+              -- Getting Started with Azure SQL Database
+              (266, 37,  4),
+              (267, 37, 59),
+              (268, 37,  8),
+              (269, 37, 23),
+              (270, 37, 24),
+              (371, 37, 27),
+
+              -- Getting Started with Azure DevOps
+              (372, 38, 15),
+              (373, 38,  4),
+              (374, 38, 61),
+              (375, 38,  8),
+              (376, 38, 62),
+              (377, 38, 63),
+              (378, 38, 64)
 
               )
 

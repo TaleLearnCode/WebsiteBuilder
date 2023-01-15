@@ -141,11 +141,45 @@ USING (VALUES
               (105, 105, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Graphing%20Your%20Way%20Through%20the%20Cosmos%20-%20DogFoodCon.pdf'),                                                -- DogFoodCon
 
               -- Which Microsoft Framework Am I Supposed to Use
-              (106, 106, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20KCDC.pdf'),                           -- KCDC
-              (107, 107, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20Louisville%20NET%20Meetup.pdf'),      -- Louisville .NET Meetup
-              (108, 108, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20Evansville%20Technology%20Group.pdf') -- Evansville Technology Group
-              
-              
+              (106, 106, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20KCDC.pdf'),                                        -- KCDC
+              (107, 107, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20Louisville%20NET%20Meetup.pdf'),                   -- Louisville .NET Meetup
+              (108, 108, 'Slides', 'https://chadgreen.blob.core.windows.net/slides/Which%20Microsoft%20Framework%20Am%20I%20Supposed%20to%20Use%20-%20Evansville%20Technology%20Group.pdf'),             -- Evansville Technology Group
+
+              -- Building Great Libraries with .NET Standard
+              (111, 111, 'Slides', 'https://web.archive.org/web/20220119173323/https://chadgreen.blob.core.windows.net/slides/Building%20Great%20Libraries%20with%20.NET%20Standard%20-%20Nebraska.Code.pdf'),  -- Nebraska.Code() 2019
+              (112, 112, 'Slides', 'https://web.archive.org/web/20220119171613/https://chadgreen.blob.core.windows.net/slides/Building%20Great%20Libraries%20with%20.NET%20Standard%20-%20Nebraska.Code.pdf'),  -- Music City Tech 2019
+              (113, 113, 'Slides', 'https://web.archive.org/web/20220119155951/https://chadgreen.blob.core.windows.net/slides/Building%20Great%20Libraries%20with%20.NET%20Standard%20-%20Prairie.Code().pdf'), -- Prairie.Code() 2019
+
+              -- Building an Ultra-Scalable API Using Azure Functions
+              (115, 115, 'Slides', 'https://web.archive.org/web/20220119160221/https://chadgreen.blob.core.windows.net/slides/Building%20an%20Ultra-Scalable%20API%20Using%20Azure%20Functions%20Without%20Too%20Much%20Worry.pdf'),  -- DogFoodCon 2018
+
+              -- Delivering Real-Time Data with Azure
+              (116, 116, 'Slides', 'https://web.archive.org/web/20220119175412/https://chadgreen.blob.core.windows.net/slides/Delivering%20Real-Time%20Data%20with%20Azure%20-%20DevUp.pdf'),                                         -- DevUp 2019
+              (117, 117, 'Slides', 'https://web.archive.org/web/20220119174236/https://chadgreen.blob.core.windows.net/slides/Delivering%20Real-Time%20Data%20with%20Azure%20-%20SFSDC.pdf'),                                         -- South Florida Developers Conference 2020
+
+              -- Azure Durable Functions for Serverless .NET Orchestration
+              (119, 119, 'Slides', 'https://web.archive.org/web/20220119170643/https://chadgreen.blob.core.windows.net/slides/Azure%20Services%20Every%20Developer%20Needs%20to%20Know%20-%20Louisville%20.NET%20Meetup%20(January%202019).pdf'),   -- Stir Trek 2019
+
+              -- Building Hyper-Scaled Event-Processing Solutions in Azure
+              (122, 122, 'Slides', 'https://web.archive.org/web/20220119175412/https://chadgreen.blob.core.windows.net/slides/Getting%20Started%20with%20Azure%20Event%20Hubs%20-%20DevUp.pdf'),                                                    -- dev up 2019
+
+              -- Getting Gremlins to Improve Your Data
+              (123, 123, 'Slides', 'https://web.archive.org/web/20220119170326/https://chadgreen.blob.core.windows.net/slides/Getting%20Gremlins%20to%20Improve%20Your%20Data%20-%20Beer%20City%20Code.pdf'),                                       -- Beer City Code 2019
+              (124, 124, 'Slides', 'https://web.archive.org/web/20220119171613/https://chadgreen.blob.core.windows.net/slides/Getting%20Gremlins%20to%20Improve%20Your%20Data%20-%20Music%20City%20Tech.pdf'),                                      -- Music City Tech 2019
+              (125, 124, 'Labs',   'https://web.archive.org/web/20220119171613/http://bit.ly/2lXiKEZ'),                                                                                                                                             -- Music CIty Tech 2019
+
+              -- Getting Started with Azure SQL Database
+              (126, 126, 'Slides', 'https://web.archive.org/web/20220119172105/https://chadgreen.blob.core.windows.net/slides/Getting%20Started%20with%20Azure%20SQL%20Database%20-%20TechFest.pdf'),                                               -- Pittsburgh TechFest 2018
+              (127, 127, 'Slides', 'https://web.archive.org/web/20220119172636/https://chadgreen.blob.core.windows.net/slides/Getting%20Started%20with%20Azure%20SQL%20Database%20-%20CodeStock.pdf'),                                              -- CodeStock 2019
+              (128, 128, 'Slides', 'https://web.archive.org/web/20220119173547/https://chadgreen.blob.core.windows.net/slides/Getting%20Started%20with%20Azure%20SQL%20Database%20-%20DotNetSouth.pdf'),                                            -- DotNetSouth 2018
+              (129, 129, 'Slides', 'https://web.archive.org/web/20220119172255/https://chadgreen.blob.core.windows.net/slides/Getting%20Started%20with%20Azure%20SQL%20Database%20-%20KCDC.pdf'),                                                   -- KCDC 2019
+
+              -- Getting Started with Azure DevOps
+              (130, 130, 'Slides', 'https://web.archive.org/web/20220119160307/https://chadgreen.blob.core.windows.net/slides/Gettings%20Started%20with%20Azure%20DevOps%20-%20Evansville.pdf'),                                                    -- Evansville Technology Group - December 2018
+              (131, 131, 'Slides', 'https://web.archive.org/web/20220119174915/https://chadgreen.blob.core.windows.net/slides/Gettings%20Started%20with%20Azure%20DevOps%20-%20Louisville.pdf'),                                                    -- Louisville .NET Meetup - December 2018
+              (132, 132, 'Slides', 'https://web.archive.org/web/20220119173547/https://chadgreen.blob.core.windows.net/slides/Gettings%20Started%20with%20Azure%20DevOps%20-%20DotNetSouth.pdf'),                                                   -- DotNetSouth
+              (133, 133, 'Slides', 'https://web.archive.org/web/20220119170522/https://chadgreen.blob.core.windows.net/slides/Gettings%20Started%20with%20Azure%20DevOps%20-%20CincyDeliver.pdf')                                                   -- Cincy Deliver 2019
+
               
               )
 AS SOURCE (ShindigPresentationDownloadId,

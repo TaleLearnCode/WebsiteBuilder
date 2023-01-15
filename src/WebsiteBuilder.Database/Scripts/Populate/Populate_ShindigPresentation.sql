@@ -49,6 +49,7 @@ USING (VALUES
               ( 31, 71, 9, '2019-06-06 18:00', '2019-06-06 19:30', 'EDT', 'TEKsystems'),             -- Louisville Tech Ladies
               ( 32, 12, 9, '2022-09-08 18:30', '2022-09-08 20:00', 'CDT', 'Online'),                 -- Tulsa .NET User Group
               ( 33, 10, 9, '2022-10-04 13:00', '2022-10-04 14:00', 'CDT', 'Tuscany'),                -- Prairie Dev Con - Regina
+              (135,  1, 9, '2023-03-23 14:45', '2023-03-23 16:00', 'PDT', NULL),                     -- VSLive Las Vegas 2023
 
               -- Going Schema-less: How to migrate a relational database to a NoSQL database
               ( 34,  14, 14, '2022-07-26 16:00', '2022-07-26 17:00', 'CDT', 'Room H'),                -- THAT
@@ -60,10 +61,12 @@ USING (VALUES
               ( 40,  30, 14, '2021-07-14 15:45', '2021-07-14 16:15', 'CDT', '105'),                   -- Nebraska.Code
 
               -- Technical Debt Is Not Free
-              ( 41,  16, 15, '2022-07-22 14:00', '2022-07-22 14:45', 'EDT', 'Ballroom'),              -- Scenic City Summit
-              ( 42,  17, 15, '2022-08-20 19:00', '2022-07-20 20:30', 'EDT', 'Modis'),                 -- Louisville .NET Meetup (July 2022)
-              ( 43,  18, 15, '2022-07-15 13:15', '2022-07-15 14:15', 'CDT', 'Arbor 2'),               -- Nebraska.Code() 2022
-              ( 44,  19, 15, '2022-06-08 11:00', '2022-06-08 12:00', 'CDT', 'Prosperity'),            -- dev up
+              ( 41,  16, 15, '2022-07-22 14:00', '2022-07-22 14:45', 'EDT', 'Ballroom'),                  -- Scenic City Summit
+              ( 42,  17, 15, '2022-08-20 19:00', '2022-07-20 20:30', 'EDT', 'Modis'),                     -- Louisville .NET Meetup (July 2022)
+              ( 43,  18, 15, '2022-07-15 13:15', '2022-07-15 14:15', 'CDT', 'Arbor 2'),                   -- Nebraska.Code() 2022
+              ( 44,  19, 15, '2022-06-08 11:00', '2022-06-08 12:00', 'CDT', 'Prosperity'),                -- dev up
+              (134,   1, 15, '2023-03-23 11:00', '2023-03-23 12:15', 'PDT', NULL),                        -- VSLive Las Vegas 2023
+              (135,   2, 15, '2023-04-20 16:30', '2023-04-20 17:30', 'EDT', 'Mt. Everest (Auditorium)'),  -- Inflectracon 2023
 
               -- Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
               ( 45,   4, 16, '2022-11-10 14:50', '2022-11-10 15:50', 'EST', 'Kilimanjaro 8'),         -- Tech Bash

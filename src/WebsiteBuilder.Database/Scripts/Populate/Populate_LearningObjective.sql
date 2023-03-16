@@ -178,7 +178,18 @@ USING (VALUES
               -- Getting Started with Azure DevOps
               (102, 38, 1, 'Learning what exactly DevOps is and what is not'),
               (103, 38, 2, 'Learning about the different features of Azure DevOps'),
-              (104, 38, 3, 'See first hand how to get started using Azure DevOps to start continuously deliver value to your customers')
+              (104, 38, 3, 'See first hand how to get started using Azure DevOps to start continuously deliver value to your customers'),
+
+              -- Other Duties as Assigned
+              (105, 39, 1, 'Learn how to seek out other duties in order to improve your skill set'),
+              (106, 39, 2, 'Learn how to benefit from other duties and make strides in your professional career'),
+              (107, 39, 3, 'Learn how to not be abused from other duties that take you away too much from your normal tasks'),
+
+              -- Database-Driven Static Websites
+              (108, 40, 1, 'Learn how to use Azure Static Web Apps can be used to deploy dependably fast web apps'),
+              (109, 40, 2, 'Learn how to add dynamic functionality to static web apps using Azure Functions'),
+              (110, 40, 3, 'Learn how to build a continious-deployment implementation that responds to database changes')
+
               )
               
               

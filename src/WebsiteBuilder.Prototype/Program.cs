@@ -12,7 +12,7 @@ if (accessToken is not null)
 	using ProgressBar progressBar = new(7, "Retrieving website data...");
 
 	using WebsiteBuilderContext websiteBuilderContext = new();
-	List<Shindig> speakingEngagements = await websiteBuilderContext.Shindigs.ToListAsync();
+	List<Shindig> speakingEngagements = await websiteBuilderContext.Shindigs.OrderByDescending(x => x.StartDate).ToListAsync();
 	List<Shindig> upcomingSpeakingEngagements = speakingEngagements.Where(x => x.StartDate >= DateTime.UtcNow).ToList();
 	List<Presentation> presentations = await websiteBuilderContext.Presentations
 		.Include(x => x.PresentationTags)
@@ -35,14 +35,14 @@ if (accessToken is not null)
 	using Repository repository = new(workingDirectoryPath);
 	Checkout(repository);
 
-	SpeakingEnagementServices speakingEnagementServices = new(websiteBuilderContext, repository, workingDirectoryPath, upcomingSpeakingEngagements);
+	SpeakingEngagementServices speakingEnagementServices = new(websiteBuilderContext, repository, workingDirectoryPath, upcomingSpeakingEngagements);
 	PresentationServices presentationServices = new(websiteBuilderContext, repository, workingDirectoryPath, upcomingSpeakingEngagements);
 
 	progressBar.Tick("Building speaking engagements listing page...");
-	bool speakingEngagementListingChanges = await speakingEnagementServices.BuildSpeakingEngagmentListAsync(speakingEngagements);
+	bool speakingEngagementListingChanges = await speakingEnagementServices.BuildSpeakingEngagementListAsync(speakingEngagements);
 
 	progressBar.Tick("Building speaking engagement detail pages...");
-	bool speakingEngagementDetailChanges = await speakingEnagementServices.BuildSpeakingEngagmentPagesAsync(speakingEngagements, progressBar);
+	bool speakingEngagementDetailChanges = await speakingEnagementServices.BuildSpeakingEngagementPagesAsync(speakingEngagements, progressBar);
 
 	progressBar.Tick("Buidling presentation listing page...");
 	bool presentationListingChanges = await presentationServices.BuildListingPageAsync(presentations);

@@ -1,9 +1,9 @@
 ﻿namespace WebsiteBuilder.Prototype.Services;
 
-internal class SpeakingEnagementServices : ServicesBase
+internal class SpeakingEngagementServices : ServicesBase
 {
 
-	internal SpeakingEnagementServices(
+	internal SpeakingEngagementServices(
 		WebsiteBuilderContext websiteBuilderContext,
 		Repository repository,
 		string workingDirectoryPath,
@@ -14,7 +14,7 @@ internal class SpeakingEnagementServices : ServicesBase
 			upcomingSpeakingEngagements)
 	{ }
 
-	internal async Task<bool> BuildSpeakingEngagmentListAsync(List<Shindig> speakingEngagements)
+	internal async Task<bool> BuildSpeakingEngagementListAsync(List<Shindig> speakingEngagements)
 	{
 		if (TryGetTemplateDetails(TemplateTypeIdValues.SpeakingEngagementListing, out Template? templateDetails) && templateDetails is not null && templateDetails.TemplateType.Permalink is not null)
 		{
@@ -55,7 +55,7 @@ internal class SpeakingEnagementServices : ServicesBase
 		return false;
 	}
 
-	internal async Task<bool> BuildSpeakingEngagmentPagesAsync(
+	internal async Task<bool> BuildSpeakingEngagementPagesAsync(
 		List<Shindig> speakingEngagements,
 		ProgressBar parentProgressBar)
 	{
@@ -70,7 +70,7 @@ internal class SpeakingEnagementServices : ServicesBase
 		return response;
 	}
 
-	private async Task<bool> BuildSpeakingEngagementPageAsync(Shindig speakingEngagment)
+	private async Task<bool> BuildSpeakingEngagementPageAsync(Shindig speakingEngagement)
 	{
 		if (TryGetTemplateDetails(TemplateTypeIdValues.SpeakingEngagementDetail, out Template? templateDetails) && templateDetails is not null)
 		{
@@ -80,27 +80,27 @@ internal class SpeakingEnagementServices : ServicesBase
 			{
 				string lineHtml = await GlobalReplacements(templateLine);
 				if (lineHtml.Contains("<template-engagement_name></template-engagement_name>"))
-					lineHtml = lineHtml.Replace("<template-engagement_name></template-engagement_name>", speakingEngagment.ShindigName);
+					lineHtml = lineHtml.Replace("<template-engagement_name></template-engagement_name>", speakingEngagement.ShindigName);
 				if (lineHtml.Contains("<template-engagement_summarymeta></template-engagement_summarymeta>"))
-					lineHtml = lineHtml.Replace("<template-engagement_summarymeta></template-engagement_summarymeta>", $"<meta name=\"summary\" content=\"{speakingEngagment.ShindigSummary}\"");
+					lineHtml = lineHtml.Replace("<template-engagement_summarymeta></template-engagement_summarymeta>", $"<meta name=\"summary\" content=\"{speakingEngagement.ShindigSummary}\"");
 				if (lineHtml.Contains("<template-engagement_dates></template-engagement_dates>"))
-					lineHtml = lineHtml.Replace("<template-engagement_dates></template-engagement_dates>", DateRangeToString(speakingEngagment.StartDate, speakingEngagment.EndDate));
+					lineHtml = lineHtml.Replace("<template-engagement_dates></template-engagement_dates>", DateRangeToString(speakingEngagement.StartDate, speakingEngagement.EndDate));
 				if (lineHtml.Contains("<template-engagment_description></template-engagment_description>"))
-					lineHtml = lineHtml.Replace("<template-engagment_description></template-engagment_description>", speakingEngagment.ShindigDescription);
+					lineHtml = lineHtml.Replace("<template-engagment_description></template-engagment_description>", speakingEngagement.ShindigDescription);
 				if (lineHtml.Contains("<template-engagement_overviewlocation></template-engagement_overviewlocation>"))
-					lineHtml = lineHtml.Replace("<template-engagement_overviewlocation></template-engagement_overviewlocation>", speakingEngagment.OverviewLocation);
+					lineHtml = lineHtml.Replace("<template-engagement_overviewlocation></template-engagement_overviewlocation>", speakingEngagement.OverviewLocation);
 				if (lineHtml.Contains("<template-engagement_costs></template-engagement_costs>"))
-					lineHtml = lineHtml.Replace("<template-engagement_costs></template-engagement_costs>", AddEngagementCosts(speakingEngagment));
+					lineHtml = lineHtml.Replace("<template-engagement_costs></template-engagement_costs>", AddEngagementCosts(speakingEngagement));
 				if (lineHtml.Contains("<template-engagement_presentations></template-engagement_presentations>"))
-					lineHtml = lineHtml.Replace("<template-engagement_presentations></template-engagement_presentations>", AddPresentations(speakingEngagment.ShindigPresentations.ToList()));
+					lineHtml = lineHtml.Replace("<template-engagement_presentations></template-engagement_presentations>", AddPresentations(speakingEngagement.ShindigPresentations.ToList()));
 				if (lineHtml.Contains("template-engagement_link"))
-					lineHtml = lineHtml.Replace("template-engagement_link", speakingEngagment.ShindigLink);
+					lineHtml = lineHtml.Replace("template-engagement_link", speakingEngagement.ShindigLink);
 				if (lineHtml.Contains("template-presentation_permalink"))
-					lineHtml = lineHtml.Replace("template-presentation_permalink", speakingEngagment.Permalink);
+					lineHtml = lineHtml.Replace("template-presentation_permalink", speakingEngagement.Permalink);
 				pageHtml.AppendLine(lineHtml);
 			}
 
-			string permalink = $"{speakingEngagment.Permalink}.html";
+			string permalink = $"{speakingEngagement.Permalink}.html";
 			string pathInWorkingDirectory = GetPathInWorkingDirectory(permalink);
 			string pathWithWorkingDirectory = GetPathWithWorkingDirectory(permalink);
 			if (File.Exists(pathWithWorkingDirectory))
@@ -212,7 +212,7 @@ internal class SpeakingEnagementServices : ServicesBase
 				for (int i = 0; i < shindigsInYear.Count; i++)
 				{
 					if (i % 2 == 0)
-						response.AppendLine($"                  <div class=\"row\" data-bgcolor=\"#EEEEEE\" onclick=\"location.href='{shindigs[i].Permalink}.html';\" style=\"cursor: pointer\">");
+						response.AppendLine($"                  <div class=\"row\" data-bgcolor=\"#EEEEEE\" onclick=\"location.href='{shindigsInYear[i].Permalink}.html';\" style=\"cursor: pointer\">");
 					else
 						response.AppendLine($"                  <div class=\"row\" onclick=\"location.href='{shindigsInYear[i].Permalink}.html';\" style=\"cursor: pointer\">");
 					response.AppendLine($"                    <div class=\"col-md-4 text-center\">{DateRangeToString(shindigsInYear[i].StartDate, shindigsInYear[i].EndDate)}</div>");
@@ -285,7 +285,8 @@ internal class SpeakingEnagementServices : ServicesBase
 				response.AppendLine($"                    <i class=\"fa fa-map-marker\"></i> {shindigPresentation.Room ?? "TBA"}<br />");
 				if (shindigPresentation.ShindigPresentationDownloads is not null && shindigPresentation.ShindigPresentationDownloads.Any())
 					foreach (ShindigPresentationDownload shindigPresentationDownload in shindigPresentation.ShindigPresentationDownloads)
-						response.AppendLine($"                    <a href=\"{shindigPresentationDownload.DownloadLink}\" class=\"btn-custom\" target=\"_blank\">{shindigPresentationDownload.DownloadName}</a>");
+						if (!string.IsNullOrWhiteSpace(shindigPresentationDownload.DownloadLink))
+							response.AppendLine($"                    <a href=\"{shindigPresentationDownload.DownloadLink}\" class=\"btn-custom\" target=\"_blank\">{shindigPresentationDownload.DownloadName}</a>");
 				response.AppendLine($"                  </div>");
 				response.AppendLine($"                </div>");
 			}

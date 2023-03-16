@@ -35,10 +35,12 @@ USING (VALUES
 
               -- Advanced Serverless Workshop
               ( 23,  9, 5, '2022-10-17 09:00', '2022-10-17 17:00', 'CEST', 'TBA'),               -- Serverless Architecture Conference - Berlin
-              ( 24,  3, 5, NULL, NULL, 'BST', NULL),                                             -- Serverless Architecture Conference - London
+              ( 24,  3, 5, '2023-04-26 08:45', '2023-04-26 16:45', 'BST', NULL),                 -- Serverless Architecture Conference - London
 
               -- File New: Build a Event-Driven Architected Microservice from Scratch
-              ( 25,  3, 8, NULL, NULL, 'BST', NULL),                                             -- Serverless Architecture Conference - London
+              ( 25,   3, 8, '2023-04-25 16:15', '2023-04-25 17:00', 'BST', NULL),                     -- Serverless Architecture Conference - London
+              (150, 108, 8, '2023-03-25 14:30', '2023-03-25 15:20', 'EDT', '2207'),                   -- Orlando Code Camp 2023
+              (151, 112, 8, NULL, NULL, 'EDT', NULL),                                                 -- Scenic City Summit 2023
 
               -- Secrets of Conflict Resolution
               ( 26, 96, 9, '2016-05-20 14:15', '2016-05-20 15:15', 'CDT', 'Auditorium'),             -- Nebraska.Code()
@@ -52,7 +54,7 @@ USING (VALUES
               (135,  1, 9, '2023-03-23 14:45', '2023-03-23 16:00', 'PDT', NULL),                     -- VSLive Las Vegas 2023
 
               -- Going Schema-less: How to migrate a relational database to a NoSQL database
-              ( 34,  14, 14, '2022-07-26 16:00', '2022-07-26 17:00', 'CDT', 'Room H'),                -- THAT
+              ( 34,  15, 14, '2022-07-26 16:00', '2022-07-26 17:00', 'CDT', 'Room H'),                -- THAT
               ( 35,  98, 14, '2021-10-15 15:10', '2021-10-15 16:10', 'EDT', 'Breakout Three'),        -- Momentum Developer Conference
               ( 36,  99, 14, '2021-10-09 13:00', '2021-10-09 14:00', 'EDT', '207'),                   -- Atlanta Code Camp
               ( 37,  25, 14, '2021-09-17 14:15', '2021-09-17 15:15', 'CDT', '2211'),                  -- KCDC
@@ -66,7 +68,9 @@ USING (VALUES
               ( 43,  18, 15, '2022-07-15 13:15', '2022-07-15 14:15', 'CDT', 'Arbor 2'),                   -- Nebraska.Code() 2022
               ( 44,  19, 15, '2022-06-08 11:00', '2022-06-08 12:00', 'CDT', 'Prosperity'),                -- dev up
               (134,   1, 15, '2023-03-23 11:00', '2023-03-23 12:15', 'PDT', NULL),                        -- VSLive Las Vegas 2023
-              (135,   2, 15, '2023-04-20 16:30', '2023-04-20 17:30', 'EDT', 'Mt. Everest (Auditorium)'),  -- Inflectracon 2023
+              (136,   2, 15, '2023-04-21 13:15', '2023-04-21 14:30', 'EDT', 'Mt. Everest (Auditorium)'),  -- Inflectracon 2023
+              (137, 108, 15, '2023-03-25 15:30', '2023-03-25 16:20', 'EDT', '2207'),                      -- Orlando Code Camp 2023
+              (146, 109, 15, '2023-05-09 14:00', '2023-05-09 14:50', 'PDT', 'Main Stage'),                -- DeveloperWeek Management 2023
 
               -- Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
               ( 45,   4, 16, '2022-11-10 14:50', '2022-11-10 15:50', 'EST', 'Kilimanjaro 8'),         -- Tech Bash
@@ -121,19 +125,22 @@ USING (VALUES
               ( 84,  54, 21, '2020-02-07 13:45', '2020-02-07 14:30', 'EST', 'Theater 1'),              -- Ignite the Tour Government
               ( 85,  59, 21, '2019-10-12 13:00', '2019-10-12 14:00', 'CST', 'Ballroom 3'),             -- DevSpace
               ( 86,  63, 21, '2019-09-14 15:45', '2019-09-14 16:45', 'EDT', '107'),                    -- Atlanta Code Camp
+              (139,  24, 21, '2021-08-24 11:15', '2021-08-24 12:05', 'EDT', 'Room 4'),                 -- Scenic City Summit
 
               -- Serverless Microservices: Microservices without Containers
               ( 87,  28, 22, '2021-07-30 13:20', '2021-07-03 14:20', 'EDT', 'Sterling'),               -- Cincy Deliver
+              (140,  24, 22, '2021-08-24 15:20', '2021-08-24 16:10', 'EDT', 'Room 2'),                 -- Scenic City Summit
 
               -- How to be a Leader
-              ( 88,  33, 23, '2021-04-08 18:15', '2021-04-08 20:00', 'CDT', 'Online'),                 -- Tulsa .NET User Group
-              ( 89,  65, 23, '2019-09-06 13:50', '2019-09-06 14:50', 'CDT', '186'),                    -- Music City Tech
-              ( 90,  67, 23, '2019-08-15 10:00', '2019-08-15 11:00', 'CDT', 'Ardis'),                  -- Nebraska.Code()
-              ( 91,  82, 23, '2018-10-13 16:00', '2018-10-13 17:00', 'CDT', 'Ballroom 4'),             -- DevSpace
-              ( 92,  92, 23, '2018-04-20', '2018-04-20', 'CDT', 'N/A'),                                 -- CodeStock
+              (  88,  33, 23, '2021-04-08 18:15', '2021-04-08 20:00', 'CDT', 'Online'),                 -- Tulsa .NET User Group
+              (  89,  65, 23, '2019-09-06 13:50', '2019-09-06 14:50', 'CDT', '186'),                    -- Music City Tech
+              (  90,  67, 23, '2019-08-15 10:00', '2019-08-15 11:00', 'CDT', 'Ardis'),                  -- Nebraska.Code()
+              (  91,  82, 23, '2018-10-13 16:00', '2018-10-13 17:00', 'CDT', 'Ballroom 4'),             -- DevSpace
+              (  92,  92, 23, '2018-04-20 12:00', '2018-04-20 13:00', 'CDT', 'N/A'),                    -- CodeStock
 
               -- Intro to Azure Communication Services
               ( 93,  35, 24, '2021-03-15 18:00', '2021-03-15 19:30', 'EDT', 'Online'),                 -- Columbus App Dev User Group
+              (141,  35, 32, '2021-04-22 19:00', '2021-04-22 20:30', 'CDT', 'Online'),                 -- Memphis .NET User Group
 
               -- Building a .NET Application Using Azure Cosmos DB
               ( 94, 36, 25, '2021-03-16 18:00', '2021-03-16 19:30', 'CST', 'Online'),                  -- Dallas & Austin Azure Meettup
@@ -166,6 +173,7 @@ USING (VALUES
               (111, 67, 30, '2019-08-16 15:15', '2019-08-16 16:15', 'CDT', 'Osborne'),                 -- Nebraska.Code 2019
               (112, 65, 30, '2019-09-07 09:00', '2019-09-07 10:00', 'CDT', '178'),                     -- Music City Tech 2019
               (113, 64, 30, '2019-09-13 13:15', '2019-09-13 14:15', 'CDT', 'Ballroom North'),          -- Prairie.Code() 2019
+              (144, 66, 30, '2019-08-23 10:15', '2019-08-23 11:15', 'EDT', 'Pimlico'),                 -- Code PaLOUsa 2019
 
               -- Building an Ultra-Scalable API Using Azure Functions
               (114, 61, 31, '2019-10-04 09:30', '2019-10-04 10:15', 'EDT', '12'),                      -- Scenic City Summit 2019
@@ -201,8 +209,28 @@ USING (VALUES
               (130,  81, 38, '2018-12-13 11:30', '2018-12-13 12:30', 'CST', NULL),                      -- Evansville Technology Group - December 2018
               (131,  80, 38, '2018-12-20 19:00', '2018-12-20 20:30', 'EST', 'Modis'),                   -- Louisville .NET Meetup - December 2018
               (132,  73, 38, '2019-05-13 11:20', '2019-05-13 12:20', 'EDT', NULL),                      -- DotNetSouth
-              (133,  68, 38, '2019-07-26 13:00', '2019-07-26 14:00', 'EDT', 'Carolina')                 -- Cincy Deliver 2019
+              (133,  68, 38, '2019-07-26 13:00', '2019-07-26 14:00', 'EDT', 'Carolina'),                -- Cincy Deliver 2019
+              (142,  64, 38, '2019-09-12 13:15', '2019-09-12 14:15', 'CDT', 'Iowa D'),                  -- Prairie.Code() 2019
 
+              -- How to be a Speaker Like You
+			        (145, 66, 42, '2019-08-23 15:15', '2019-08-23 16:15', 'EDT', 'Keeneland'),                -- Code PaLOUsa 2019
+
+              -- One-off presentations
+               (138,  6, 41, '2022-10-20 19:00', '2022-10-20 20:30', 'EDT', 'Modis'),                    -- Louisville .NET Meetup - October 2022
+
+              -- Beyond Hello World: Getting Deeper into Azure Functions
+              (147, 110, 13, NULL, NULL, 'CDT', 'TBA'),                                                -- Prairie Dev Con Winnipeg 2023
+              
+              -- File New: Build a Fully-Managed and Documented API
+              (148, 110,  6, NULL, NULL, 'CDT', 'TBA'),                                                -- Prairie Dev Con Winnipeg 2023
+
+              -- File New: Build a Serverless Microservice from Scratch
+              (149, 111,  7, NULL, NULL, 'CDT', 'TBA'),                                                -- KCDC 2023
+
+              -- Automation using Azure Event Grid
+              (152, 113, 44, '2023-02-16 19:00', '2023-02-16 20:30', 'EST', 'Modis')                   -- Louisville .NET Meetup - February 2023
+
+              -- (ShindigPresentationId, ShindigId, PresentationId, StartDateTime, EndDateTime, TimeZone, Room)
 
 )
 AS SOURCE (ShindigPresentationId,

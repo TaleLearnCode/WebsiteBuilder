@@ -65,7 +65,9 @@ USING (VALUES ( 1, '.NET'),
               (61, 'Azure DevOps'),
               (62, 'Continous Deployment'),
               (63, 'Continous Integration'),
-              (64, 'DevOps'))
+              (64, 'DevOps'),
+              (65, 'Professional Development'),
+              (66, 'Static Web Apps'))
 AS SOURCE (TagId,
            TagName)
 ON TARGET.TagId = SOURCE.TagId
